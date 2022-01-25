@@ -1,0 +1,100 @@
+version: '3'
+
+services:
+  full0:
+    container_name: full0
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--log.level", "DEBUG",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.2:26657",
+            "--headers.trusted-hash", 
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96",
+            "--headers.trusted-peer",
+            "/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB,/ip4/192.167.10.8/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM,/ip4/192.167.10.9/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full0/nodekey0:/celestia-full/keys/OAZHALLLMV4Q:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.6
+
+  full1:
+    container_name: full1
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.3:26657",
+            "--headers.trusted-hash", 
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96",
+            "--headers.trusted-peer",
+            "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw,/ip4/192.167.10.8/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM,/ip4/192.167.10.9/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full1/nodekey1:/celestia-full/keys/OAZHALLLMV4Q:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.7
+
+  full2:
+    container_name: full2
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.4:26657",
+            "--headers.trusted-hash", 
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96",
+            "--headers.trusted-peer",
+            "/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB,/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw,/ip4/192.167.10.9/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full2/nodekey2:/celestia-full/keys/OAZHALLLMV4Q:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.8
+
+  full3:
+    container_name: full3
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.5:26657",
+            "--headers.trusted-hash", 
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96",
+            "--headers.trusted-peer",
+            "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw,/ip4/192.167.10.8/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM,/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full3/nodekey3:/celestia-full/keys/OAZHALLLMV4Q:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.9
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
