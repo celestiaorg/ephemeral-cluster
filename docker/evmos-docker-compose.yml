@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  evmos0:
+    container_name: evmos0
+    image: "ghcr.io/jbowen93/evmos:latest"
+    command: [
+            "evmosd", "start",
+            "--home", "/root"
+             ]
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.15
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16

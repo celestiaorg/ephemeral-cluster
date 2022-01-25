@@ -12,6 +12,10 @@ docker-compose -f docker/bridge-docker-compose.yml rm -f
 docker-compose -f docker/light-docker-compose.yml stop
 docker-compose -f docker/light-docker-compose.yml rm -f
 
-# Stop and remove  the DALC node
+# Stop and remove the DALC node
 docker-compose -f docker/dalc-docker-compose.yml stop
 docker-compose -f docker/dalc-docker-compose.yml rm -f
+
+# Stop and remove the evmos node
+docker-compose -f docker/evmos-docker-compose.yml stop
+docker-compose -f docker/evmos-docker-compose.yml rm -f

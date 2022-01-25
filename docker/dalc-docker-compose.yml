@@ -14,7 +14,9 @@ services:
        - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
        - ${PWD}/dalc/dalc.toml:/root/.dalc/dalc.toml
        - ${PWD}/dalc/height_map.json:/root/.dalc/height_map.json
-       - ${PWD}/dalc/celestia-light:/root/.celestia-light
+       - ${PWD}/dalc/celestia-light/keys/OAZHALLLMV4Q:/root/.celestia-light/keys/OAZHALLLMV4Q
+       - ${PWD}/dalc/celestia-light/data/LOCK:/root/.celestia-light/data/LOCK
+       - ${PWD}/dalc/celestia-light/config.toml:/root/.celestia-light/config.toml
 
     networks:
       localnet:

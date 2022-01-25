@@ -28,3 +28,6 @@ docker-compose -f docker/dalc-docker-compose.yml up -d
 
 # Fund the DALC node
 ./fund-dalc.sh
+
+# Start the evmos node
+docker-compose -f docker/evmos-docker-compose.yml up -d
