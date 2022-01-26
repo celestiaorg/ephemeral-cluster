@@ -3,17 +3,22 @@ version: '3'
 services:
   evmos0:
     container_name: evmos0
-    image: "ghcr.io/jbowen93/evmos:latest2"
+    image: "ghcr.io/jbowen93/evmos:testing"
     command: [
             "evmosd", "start",
-            "--home", "/root",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
             "--optimint.da_layer", "grpc",
             "--optimint.da_config", '{"host":"192.167.10.14", "port":4200}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",
+            "--json-rpc.enable", "true",
+            "--json-rpc.api", "eth,txpool,personal,net,debug,web3,miner",
+            "--json-rpc.address", "0.0.0.0:8545",
              ]
+    ports:
+      # Expose the EVM json-rpc server
+      - 8545:8545
     networks:
       localnet:
         ipv4_address: 192.167.10.15
