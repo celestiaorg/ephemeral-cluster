@@ -14,7 +14,7 @@ sleep 40s
 # Start bridge nodes
 docker-compose -f docker/bridge-docker-compose.yml up -d
 
-echo "Waiting 30s for bridge nodes to sync a block"
+# echo "Waiting 30s for bridge nodes to sync a block"
 sleep 30s
 
 # Start light nodes
@@ -33,4 +33,10 @@ echo "Sleeping 10s to wait for DALC funding tx to go through"
 sleep 10s
 
 # Start the evmos node
-docker-compose -f docker/evmos-docker-compose.yml up -d
+docker-compose -f docker/evmos-docker-compose-debug.yml up -d
+
+# echo "Sleeping 10s to wait for evmos block"
+# sleep 10s
+
+# Create and fund another EVM key
+# ./create-evm-key.sh
