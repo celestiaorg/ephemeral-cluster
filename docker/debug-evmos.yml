@@ -3,7 +3,7 @@ version: '3'
 services:
   evmos0:
     container_name: evmos0
-    image: "ghcr.io/jbowen93/evmos:testing-debug"
+    image: "ghcr.io/jbowen93/evmos:titties"
     command: [
             "dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec",
             "/usr/bin/evmosd", "--", "start",
