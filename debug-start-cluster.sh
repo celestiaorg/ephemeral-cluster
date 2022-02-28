@@ -32,11 +32,8 @@ docker-compose -f docker/dalc-docker-compose.yml up -d
 echo "Sleeping 10s to wait for DALC funding tx to go through"
 sleep 10s
 
-# Start the evmos node
+# Start the cevmos node
 docker-compose -f docker/debug-evmos.yml up -d
 
-# echo "Sleeping 10s to wait for evmos block"
-# sleep 10s
-
-# Create and fund another EVM key
-# ./create-evm-key.sh
+# Alternatively, start the vanilla evmos node
+# docker-compose -f docker/debug-vanilla-evmos.yml up -d

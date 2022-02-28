@@ -12,10 +12,3 @@ echo "external key"; \
 evmosd keys unsafe-export-eth-key external --keyring-backend test;
 echo "initial key"; \
 evmosd keys unsafe-export-eth-key mykey --keyring-backend test'
-
-# PRIV1=
-# PRIV2=
-# cast wallet address --private-key=$PRIV1
-# cast wallet address --private-key=$PRIV2
-# ETH_FROM=$ADDR1
-# seth send --value 1 $ADDR2 --rpc-accounts -G 100000 -P 20
