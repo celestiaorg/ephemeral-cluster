@@ -3,8 +3,7 @@ version: '3'
 services:
   evmos0:
     container_name: evmos0
-    # image: "ghcr.io/jbowen93/evmos:coinbase"
-    image: "ghcr.io/jbowen93/evmos:debug-a904f1e-debug"
+    image: "ghcr.io/jbowen93/evmos:sha-a585a2d-debug"
     command: [
             "dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec",
             "/usr/bin/evmosd", "--", "start",

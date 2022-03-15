@@ -3,7 +3,7 @@ version: '3'
 services:
   evmos0:
     container_name: evmos0
-    image: "ghcr.io/jbowen93/evmos:testing"
+    image: "ghcr.io/jbowen93/evmos:sha-a585a2d"
     command: [
             "evmosd", "start",
             "--optimint.aggregator", "true",
