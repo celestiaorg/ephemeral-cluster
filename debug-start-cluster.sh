@@ -34,6 +34,3 @@ sleep 10s
 
 # Start the cevmos node
 docker-compose -f docker/debug-evmos.yml up -d
-
-# Alternatively, start the vanilla evmos node
-# docker-compose -f docker/debug-vanilla-evmos.yml up -d
