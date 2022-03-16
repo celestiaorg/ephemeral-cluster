@@ -2,6 +2,7 @@ version: '3'
 
 services:
   evmos0:
+    platform: linux/amd64
     container_name: evmos0
     image: "ghcr.io/jbowen93/evmos:sha-25de08d"
     command: [
