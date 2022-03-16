@@ -36,6 +36,9 @@ docker-compose -f docker/dalc-docker-compose.yml up -d
 echo "Sleeping 10s to wait for DALC funding tx to go through"
 sleep 10s
 
+# Extra sleep for CI
+sleep 30s
+
 # Start the regular cevmos node
 echo "Creating Cevmos node(s)"
 docker-compose -f docker/evmos-docker-compose.yml up -d
