@@ -3,7 +3,8 @@ version: '3'
 services:
   evmos0:
     container_name: evmos0
-    image: "ghcr.io/jbowen93/evmos:sha-cbd5856-debug"
+    image: "ghcr.io/jbowen93/evmos:sha-7f5830c-debug"
+    platform: linux/amd64
     command: [
             "dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec",
             "/usr/bin/evmosd", "--", "start",
