@@ -1,9 +1,3 @@
-[Core]
-  Remote = false
-  [Core.RemoteConfig]
-    Protocol = "tcp"
-    RemoteAddr = "192.167.10.2:26657"
-
 [P2P]
   ListenAddresses = ["/ip4/0.0.0.0/tcp/2121", "/ip6/::/tcp/2121"]
   AnnounceAddresses = []

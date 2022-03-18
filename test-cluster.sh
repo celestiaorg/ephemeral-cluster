@@ -1,5 +1,10 @@
 #!/bin/bash
 
+CELESTIA_APP_IMAGE=
+CELESTIA_NODE_IMAGE=
+DALC_IMAGE=
+EVMOS_IMAGE=
+
 # Ensure key permissions are setup
 chmod 0600 celestia-node/full/*/nodekey*
 chmod 0600 celestia-node/light/*/nodekey*
@@ -28,8 +33,7 @@ sleep 10s
 
 # Start the DALC node
 echo "Creating DALC node(s)"
-docker-compose -f docker/evan-dalc.yml up -d
-# docker-compose -f docker/dalc-docker-compose.yml up -d
+docker-compose -f docker/dalc-docker-compose.yml up -d
 
 # Fund the DALC node
 ./fund-dalc.sh
@@ -40,4 +44,3 @@ sleep 10s
 # Start the regular cevmos node
 echo "Creating Cevmos node(s)"
 docker-compose -f docker/evmos-docker-compose.yml up -d
-# docker-compose -f docker/debug-evmos.yml up -d

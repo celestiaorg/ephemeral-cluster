@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  dalc0:
+    container_name: dalc0
+    # image: "ghcr.io/celestiaorg/dalc:latest"
+    image: "dalc:evan-pr55"
+    environment:
+      - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
+      - NODE_TYPE=light
+    command: [
+            "celestia", "light",
+            "--node.store", "/celestia-light",
+            "start",
+            # "--headers.trusted-peers",
+            # "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
+            "--headers.trusted-hash", 
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
+             ]
+    volumes:
+       - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
+       - ${PWD}/dalc/dalc.toml:/celestia-light/optimint_server.toml
+
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.14
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
+
+
+

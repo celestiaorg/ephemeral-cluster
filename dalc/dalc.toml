@@ -13,8 +13,6 @@
   broadcast-mode = 1
   keyring-account-name = "dalc"
 
-[light-client]
-
 [keyring]
   backend = "test"
-  path = "/root"
+  path = "/celestia-light"
