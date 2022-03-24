@@ -16,7 +16,7 @@ services:
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
-       - ${PWD}/celestia-node/full/full0/nodekey0:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/bridge/bridge0/nodekey0:/celestia-bridge/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.6
@@ -36,7 +36,7 @@ services:
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
-       - ${PWD}/celestia-node/full/full1/nodekey1:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/bridge/bridge1/nodekey1:/celestia-bridge/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.7
@@ -56,7 +56,7 @@ services:
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
-       - ${PWD}/celestia-node/full/full2/nodekey2:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/bridge/bridge2/nodekey2:/celestia-bridge/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.8
@@ -76,7 +76,7 @@ services:
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96",
              ]
     volumes:
-       - ${PWD}/celestia-node/full/full3/nodekey3:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/bridge/bridge3/nodekey3:/celestia-bridge/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.9

@@ -16,7 +16,7 @@ services:
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96",
              ]
     volumes:
-       - ${PWD}/celestia-node/full/full0/nodekey0:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-bridge/bridge/bridge0/nodekey0:/celestia-bridge/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.6
