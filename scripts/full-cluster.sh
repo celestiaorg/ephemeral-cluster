@@ -27,7 +27,7 @@ sleep 10s
 docker-compose -f docker/dalc-docker-compose.yml up -d
 
 # Fund the DALC node
-./fund-dalc.sh
+scripts/fund-dalc.sh
 
 echo "Sleeping 10s to wait for DALC funding tx to go through"
 sleep 10s
