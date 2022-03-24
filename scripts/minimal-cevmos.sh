@@ -14,14 +14,14 @@ sleep 30s
 
 # Start full0 bridge node
 echo "Creating bridge node(s)"
-docker-compose -f docker/debug-bridge.yml up -d
+docker-compose -f docker/single-bridge.yml up -d
 
 echo "Waiting 10s for bridge nodes to sync a block"
 sleep 10s
 
 # Start light0 light node
 echo "Creating light node(s)"
-docker-compose -f docker/debug-light.yml up -d
+docker-compose -f docker/single-light.yml up -d
 
 echo "Waiting 10s for light nodes to perform DA sampling"
 sleep 10s
