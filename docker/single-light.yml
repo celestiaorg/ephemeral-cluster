@@ -11,7 +11,7 @@ services:
             "--node.store", "/celestia-light",
             "start",
             "--headers.trusted-peers",
-            "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWAeQjVhuZrGg1qCWLyG2he41t3Gne2NMguFEnXFRRwPUq",
+            "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
             "--headers.trusted-hash", 
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
