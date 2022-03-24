@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ensure key permissions are setup
-chmod 0600 celestia-node/full/*/nodekey*
+chmod 0600 celestia-node/bridge/*/nodekey*
 chmod 0600 celestia-node/light/*/nodekey*
 chmod 0600 dalc/celestia-light/keys/*
 
