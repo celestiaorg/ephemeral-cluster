@@ -3,12 +3,12 @@ version: '3'
 services:
   bridge0:
     container_name: bridge0
-    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
+    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
     environment:
-      - NODE_TYPE=full
+      - NODE_TYPE=bridge
     command: [
-            "celestia", "full",
-            "--repo.path", "/celestia-full",
+            "celestia", "bridge",
+            "--node.store", "/celestia-bridge",
             "start",
             "--core.remote", 
             "tcp://192.167.10.2:26657",

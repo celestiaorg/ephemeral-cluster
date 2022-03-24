@@ -3,7 +3,7 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    image: "ghcr.io/celestiaorg/dalc:latest"
+    image: "ghcr.io/celestiaorg/dalc:old-stable"
     environment:
       - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
     command: [

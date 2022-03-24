@@ -3,7 +3,7 @@ version: '3'
 services:
   evmos0:
     container_name: evmos0
-    image: "ghcr.io/jbowen93/evmos:sha-7f5830c"
+    image: "ghcr.io/jbowen93/evmos:sha-958bcce" # evmos w/ ethermint v0.11.0+0.1.0
     platform: linux/amd64
     command: [
             "evmosd", "start",
