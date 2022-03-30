@@ -5,7 +5,7 @@ services:
     container_name: evmos0
     # image: "ghcr.io/jbowen93/evmos:sha-22ac5c3"
     # image: "ghcr.io/celestiaorg/evmos:optimint-963053f"
-    image: "ghcr.io/jbowen93/evmos:${EVMOS_IMAGE_TAG}"
+    image: "ghcr.io/celestiaorg/evmos:${EVMOS_IMAGE_TAG}"
     platform: linux/amd64
     command: [
             "evmosd", "start",
