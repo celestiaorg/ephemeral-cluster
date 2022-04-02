@@ -5,7 +5,7 @@ chmod 0600 celestia-node/bridge/*/nodekey*
 chmod 0600 celestia-node/light/*/nodekey*
 chmod 0600 dalc/celestia-light/keys/*
 
-# Start 4 core nodes
+# Start 1 core node
 echo "Creating core node(s)"
 docker-compose -f docker/core-docker-compose.yml up -d 
 
