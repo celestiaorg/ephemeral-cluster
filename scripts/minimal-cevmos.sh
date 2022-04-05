@@ -14,14 +14,14 @@ sleep 30s
 
 # Start full0 bridge node
 echo "Creating bridge node(s)"
-docker-compose -f docker/single-bridge.yml up -d
+docker-compose -f docker/bridge-docker-compose.yml up bridge0 -d
 
 echo "Waiting 10s for bridge nodes to sync a block"
 sleep 10s
 
 # Start light0 light node
 echo "Creating light node(s)"
-docker-compose -f docker/single-light.yml up -d
+docker-compose -f docker/light-docker-compose.yml up light0 -d
 
 echo "Waiting 10s for light nodes to perform DA sampling"
 sleep 10s
@@ -39,6 +39,3 @@ sleep 10s
 # Start the regular cevmos node
 echo "Creating Cevmos node(s)"
 docker-compose -f docker/evmos-docker-compose.yml up -d
-
-# Start the debug cevmos node
-# docker-compose -f docker/debug-evmos.yml up -d

@@ -20,7 +20,7 @@ services:
 
     networks:
       localnet:
-        ipv4_address: 192.167.10.14
+        ipv4_address: 192.167.3.0
 
 networks:
   localnet:

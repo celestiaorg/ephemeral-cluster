@@ -11,7 +11,7 @@ services:
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
             "--optimint.da_layer", "grpc",
-            "--optimint.da_config", '{"host":"192.167.10.14", "port":4200}',
+            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",
             "--json-rpc.enable", "true",
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
@@ -22,7 +22,7 @@ services:
       - 8545:8545
     networks:
       localnet:
-        ipv4_address: 192.167.10.15
+        ipv4_address: 192.167.4.0
 
 networks:
   localnet:

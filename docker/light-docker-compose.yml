@@ -11,7 +11,7 @@ services:
             "--node.store", "/celestia-light",
             "start",
             "--headers.trusted-peers",
-            "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
+            "/ip4/192.167.1.0/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
             "--headers.trusted-hash", 
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
@@ -19,7 +19,7 @@ services:
        - ${PWD}/celestia-node/light/light0/nodekey0:/celestia-light/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
-        ipv4_address: 192.167.10.10
+        ipv4_address: 192.167.2.0
 
   light1:
     container_name: light1
@@ -31,7 +31,7 @@ services:
             "--node.store", "/celestia-light",
             "start",
             "--headers.trusted-peers",
-            "/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB",
+            "/ip4/192.167.1.1/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB",
             "--headers.trusted-hash", 
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
@@ -39,7 +39,7 @@ services:
        - ${PWD}/celestia-node/light/light1/nodekey1:/celestia-light/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
-        ipv4_address: 192.167.10.11
+        ipv4_address: 192.167.2.1
         
   light2:
     container_name: light2
@@ -51,7 +51,7 @@ services:
             "--node.store", "/celestia-light",
             "start",
             "--headers.trusted-peers",
-            "/ip4/192.167.10.8/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM",
+            "/ip4/192.167.1.2/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM",
             "--headers.trusted-hash", 
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
@@ -59,27 +59,7 @@ services:
        - ${PWD}/celestia-node/light/light2/nodekey2:/celestia-light/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
-        ipv4_address: 192.167.10.12
-
-  light3:
-    container_name: light3
-    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
-    environment:
-      - NODE_TYPE=light
-    command: [
-            "celestia", "light",
-            "--node.store", "/celestia-light",
-            "start",
-            "--headers.trusted-peers",
-            "/ip4/192.167.10.9/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda",
-            "--headers.trusted-hash", 
-            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
-             ]
-    volumes:
-       - ${PWD}/celestia-node/light/light3/nodekey3:/celestia-light/keys/OAZHALLLMV4Q:ro
-    networks:
-      localnet:
-        ipv4_address: 192.167.10.13
+        ipv4_address: 192.167.2.2
 
 networks:
   localnet:

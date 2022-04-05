@@ -12,11 +12,11 @@ services:
             "--moniker", "core0",
             "--p2p.persistent_peers",
             # Core1
-            "8d63f92a4de96c749a6d51645d9fe3893fd73687@192.167.10.3:26656",
+            "8d63f92a4de96c749a6d51645d9fe3893fd73687@192.167.10.1:26656",
             # Core2
-            "015803505e1aa9b25e9360cebbef3f3f437dfc60@192.167.10.4:26656",
+            "015803505e1aa9b25e9360cebbef3f3f437dfc60@192.167.10.2:26656",
             # Core3
-            "27647373272190e55ebdfbb1dfa6ccfbd3f21d64@192.167.10.5:26656",
+            "27647373272190e55ebdfbb1dfa6ccfbd3f21d64@192.167.10.3:26656",
             "--rpc.laddr", "tcp://0.0.0.0:26657"
         ]
     volumes:
@@ -27,7 +27,7 @@ services:
        - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
-        ipv4_address: 192.167.10.2
+        ipv4_address: 192.167.10.0
 
   core1:
     container_name: core1
@@ -39,11 +39,11 @@ services:
             "--moniker", "core1",
             "--p2p.persistent_peers",
             # Core0
-            "af063288498ed84bec45f99b4280b18d2ca0dea7@192.167.10.2:26656",
+            "af063288498ed84bec45f99b4280b18d2ca0dea7@192.167.10.0:26656",
             # Core2
-            "015803505e1aa9b25e9360cebbef3f3f437dfc60@192.167.10.4:26656",
+            "015803505e1aa9b25e9360cebbef3f3f437dfc60@192.167.10.2:26656",
             # Core3
-            "27647373272190e55ebdfbb1dfa6ccfbd3f21d64@192.167.10.5:26656",
+            "27647373272190e55ebdfbb1dfa6ccfbd3f21d64@192.167.10.3:26656",
             "--rpc.laddr", "tcp://0.0.0.0:26657"
             ]
     volumes:
@@ -54,7 +54,7 @@ services:
        - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
-        ipv4_address: 192.167.10.3
+        ipv4_address: 192.167.10.1
 
   core2:
     container_name: core2
@@ -66,11 +66,11 @@ services:
             "--moniker", "core2",
             "--p2p.persistent_peers",
             # Core0
-            "af063288498ed84bec45f99b4280b18d2ca0dea7@192.167.10.2:26656",
+            "af063288498ed84bec45f99b4280b18d2ca0dea7@192.167.10.0:26656",
             # Core1
-            "8d63f92a4de96c749a6d51645d9fe3893fd73687@192.167.10.3:26656",
+            "8d63f92a4de96c749a6d51645d9fe3893fd73687@192.167.10.1:26656",
             # Core3
-            "27647373272190e55ebdfbb1dfa6ccfbd3f21d64@192.167.10.5:26656",
+            "27647373272190e55ebdfbb1dfa6ccfbd3f21d64@192.167.10.3:26656",
             "--rpc.laddr", "tcp://0.0.0.0:26657"
              ]
     volumes:
@@ -81,7 +81,7 @@ services:
        - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
-        ipv4_address: 192.167.10.4
+        ipv4_address: 192.167.10.2
 
   core3:
     container_name: core3
@@ -93,11 +93,11 @@ services:
             "--moniker", "core3",
             "--p2p.persistent_peers",
             # Core0
-            "af063288498ed84bec45f99b4280b18d2ca0dea7@192.167.10.2:26656",
+            "af063288498ed84bec45f99b4280b18d2ca0dea7@192.167.10.0:26656",
             # Core1
-            "8d63f92a4de96c749a6d51645d9fe3893fd73687@192.167.10.3:26656",
+            "8d63f92a4de96c749a6d51645d9fe3893fd73687@192.167.10.1:26656",
             # Core 2
-            "015803505e1aa9b25e9360cebbef3f3f437dfc60@192.167.10.4:26656",
+            "015803505e1aa9b25e9360cebbef3f3f437dfc60@192.167.10.2:26656",
             "--rpc.laddr", "tcp://0.0.0.0:26657"
              ]
     volumes:
@@ -108,7 +108,7 @@ services:
        - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
-        ipv4_address: 192.167.10.5
+        ipv4_address: 192.167.10.3
 
 networks:
   localnet:
@@ -117,4 +117,4 @@ networks:
       driver: default
       config:
       -
-        subnet: 192.167.10.0/16
+        subnet: 192.167.0.0/16
