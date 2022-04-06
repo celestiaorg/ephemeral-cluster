@@ -3,7 +3,7 @@
 This repository contains configuration files and related scripts to starting Celestia and/or Cevmos clusters using docker compose 
 
 ## Dependencies
-You must have both Docker and Docker Compose installed
+You must have both Docker and Docker Compose v2 installed
 
 Install Docker: (https://docs.docker.com/engine/install/)  
 Install Docker Compose: (https://docs.docker.com/compose/install/)
