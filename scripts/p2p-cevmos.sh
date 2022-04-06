@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ensure key permissions are setup
-chmod 0600 celestia-node/full/*/nodekey*
+chmod 0600 celestia-node/bridge/*/nodekey*
 chmod 0600 celestia-node/light/*/nodekey*
 chmod 0600 dalc/celestia-light/keys/*
 
@@ -27,18 +27,10 @@ sleep 10s
 docker-compose -f docker/dalc-docker-compose.yml up -d
 
 # Fund the DALC node
-./fund-dalc.sh
+scripts/fund-dalc.sh
 
 echo "Sleeping 10s to wait for DALC funding tx to go through"
 sleep 10s
 
 # Start the evmos node
-# docker-compose -f docker/evmos-docker-compose-debug.yml up -d
-docker-compose -f docker/debug-evmos.yml up -d
-
-
-# echo "Sleeping 10s to wait for evmos block"
-# sleep 10s
-
-# Create and fund another EVM key
-# ./create-evm-key.sh
+docker-compose -f docker/evmos-docker-compose.yml up -d
