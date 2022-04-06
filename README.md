@@ -1,6 +1,6 @@
 # Ephemeral Cluster
 
-This repository contains contiguration files and related scripts to starting Celestia and/or Cevmos clusters using docker compose 
+This repository contains configuration files and related scripts to starting Celestia and/or Cevmos clusters using docker compose 
 
 ## Dependencies
 You must have both Docker and Docker Compose installed
