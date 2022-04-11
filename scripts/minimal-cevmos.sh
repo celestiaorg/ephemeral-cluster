@@ -41,3 +41,4 @@ sleep 10s
 
 # Start the regular cevmos node
 echo "Creating Cevmos node(s)"
+docker compose -f docker/evmos-docker-compose.yml up -d
