@@ -32,5 +32,6 @@ scripts/fund-dalc.sh
 echo "Sleeping 10s to wait for DALC funding tx to go through"
 sleep 10s
 
-# Start the evmos node
+# Start the ethermint node
+echo "Creating Ethermint node(s)"
 docker compose -f docker/ethermint-docker-compose.yml up -d
