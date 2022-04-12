@@ -30,7 +30,7 @@ sleep 10s
 echo "Creating DALC node(s)"
 docker compose -f docker/dalc-docker-compose.yml up -d
 
-echo "Waiting 5 for dalc to start"
+echo "Waiting 5s for dalc to start"
 sleep 5s
 
 # Fund the DALC node
@@ -41,4 +41,4 @@ sleep 10s
 
 # Start the regular cevmos node
 echo "Creating Cevmos node(s)"
-docker compose -f docker/evmos-docker-compose.yml up -d
+docker compose -f docker/ethermint-docker-compose.yml up -d

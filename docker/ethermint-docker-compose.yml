@@ -3,11 +3,13 @@ version: '3'
 services:
   evmos0:
     container_name: evmos0
-    image: "ghcr.io/jbowen93/evmos:sha-7f5830c-debug"
-    platform: linux/amd64
+    # image: "ghcr.io/jbowen93/evmos:sha-958bcce" # evmos w/ ethermint v0.11.0+0.1.0
+    # image: "astria:local" 
+    # image: "ghcr.io/celestiaorg/evmos:${EVMOS_IMAGE_TAG}"
+    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG}"
+    image: "ethermint:local" 
     command: [
-            "dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec",
-            "/usr/bin/evmosd", "--", "start",
+            "ethermintd", "start",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
@@ -21,12 +23,6 @@ services:
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545
-      # Debug port
-      - 40000:40000
-    security_opt:
-      - "seccomp:unconfined"
-    cap_add:
-      - SYS_PTRACE
     networks:
       localnet:
         ipv4_address: 192.167.4.0
