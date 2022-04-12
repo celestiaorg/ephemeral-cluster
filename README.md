@@ -43,7 +43,7 @@ scripts/p2p-celestia.sh
 
 ## Minimal Ethermint Cluster
 
-![](min-cevmos.png "Minimum Viable Ethermint Cluster")
+![](min-ethermint.png "Minimum Viable Ethermint Cluster")
 *Minimal Ethermint Cluster*
 
 To setup the docker compose cluster run
@@ -56,7 +56,7 @@ scripts/minimal-ethermint.sh
 scripts/p2p-ethermint.sh
 ```
 
-![](p2p-cevmos.png "Multi-node Ethermint Cluster w/ P2P")
+![](p2p-ethermint.png "Multi-node Ethermint Cluster w/ P2P")
 *Multi-node Ethermint Cluster w/ P2P*
 
 # Cluster(s) Information
