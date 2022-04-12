@@ -6,8 +6,8 @@ services:
     # image: "ghcr.io/jbowen93/evmos:sha-958bcce" # evmos w/ ethermint v0.11.0+0.1.0
     # image: "astria:local" 
     # image: "ghcr.io/celestiaorg/evmos:${EVMOS_IMAGE_TAG}"
-    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG}"
-    image: "ethermint:local" 
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG}"
+    # image: "ethermint:local" 
     command: [
             "ethermintd", "start",
             "--optimint.aggregator", "true",
