@@ -1,6 +1,6 @@
 # Ephemeral Cluster
 
-This repository contains configuration files and related scripts to starting Celestia and/or Cevmos clusters using docker compose 
+This repository contains configuration files and related scripts to starting Celestia and/or Ethermint clusters using docker compose 
 
 ## Dependencies
 You must have both Docker and Docker Compose v2 installed
@@ -41,23 +41,23 @@ scripts/p2p-celestia.sh
 *Multi-node Celestia Cluster w/ P2P*
 
 
-## Minimal Cevmos Cluster
+## Minimal Ethermint Cluster
 
-![](min-cevmos.png "Minimum Viable Cevmos Cluster")
-*Minimal Cevmos Cluster*
+![](min-ethermint.png "Minimum Viable Ethermint Cluster")
+*Minimal Ethermint Cluster*
 
 To setup the docker compose cluster run
 ```
-scripts/minimal-cevmos.sh
+scripts/minimal-ethermint.sh
 ```
 
-## Cevmos Cluster w/ P2P Communication
+## Ethermint Cluster w/ P2P Communication
 ```
-scripts/p2p-cevmos.sh
+scripts/p2p-ethermint.sh
 ```
 
-![](p2p-cevmos.png "Multi-node Cevmos Cluster w/ P2P")
-*Multi-node Cevmos Cluster w/ P2P*
+![](p2p-ethermint.png "Multi-node Ethermint Cluster w/ P2P")
+*Multi-node Ethermint Cluster w/ P2P*
 
 # Cluster(s) Information
 
@@ -68,7 +68,7 @@ Each container in the cluster has its own static IP Address. Clusters with only 
 | Bridge Nodes(s) | 192.167.1.0 - 192.167.1.2 |
 | Light Nodes(s) | 192.167.2.0 - 192.167.2.2 |
 | DALC  | 192.167.3.0 |
-| Evmos | 192.167.4.0 |
+| Ethermint | 192.167.4.0 |
 
 ### Interacting with the cluster
 
@@ -91,17 +91,17 @@ docker run -it --network docker_localnet curlimages/curl:7.80.0 bash
 
 ### Deploying a Smart Contract
 
-> This assumes you're using one of the Cevmos clusters
+> This assumes you're using one of the Ethermint clusters
 
-First get the Cevmos validator's private key
+First get the Ethermint validator's private key
 ```bash
 export PRIV_KEY=$(scripts/val-priv-key.sh)
 ```
 
-You can follow the logs for the `cevmos` container with
+You can follow the logs for the `ethermint` container with
 
 ```bash
-docker logs evmos0 -f
+docker logs ethermint0 -f
 ```
 
 We'll use https://github.com/gakonst/foundry for this
@@ -231,4 +231,4 @@ To stop the cluster run
 scripts/teardown-docker-cluster.sh
 ```
 
-<!-- (TODO): Using the Evmos Debug Container -->
+<!-- (TODO): Using the Ethermint Debug Container -->

@@ -1,13 +1,12 @@
 version: '3'
 
 services:
-  evmos0:
-    container_name: evmos0
-    image: "ghcr.io/jbowen93/evmos:sha-7f5830c-debug"
-    platform: linux/amd64
+  ethermint0:
+    container_name: ethermint0
+    image: "ghcr.io/jbowen93/ethermint:sha-7f5830c-debug"
     command: [
             "dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec",
-            "/usr/bin/evmosd", "--", "start",
+            "/usr/bin/ethermintd", "--", "start",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
