@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  dalc0:
+    container_name: dalc0
+    image: "ghcr.io/celestiaorg/optimint-mockserv:e430cb4"
+    # ghcr.io/celestiaorg/optimint-mockserv:e430cb4
+    # environment:
+    #   - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
+    # command: [
+    #         "dalc", "start",
+    #         "--home", "/root"
+    #          ]
+    # volumes:
+    #    - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
+    #    - ${PWD}/dalc/dalc.toml:/root/.dalc/dalc.toml
+    #    - ${PWD}/dalc/height_map.json:/root/.dalc/height_map.json
+    #    - ${PWD}/dalc/celestia-light/keys/OAZHALLLMV4Q:/root/.celestia-light/keys/OAZHALLLMV4Q
+    #    - ${PWD}/dalc/celestia-light/data/LOCK:/root/.celestia-light/data/LOCK
+    #    - ${PWD}/dalc/celestia-light/config.toml:/root/.celestia-light/config.toml
+
+    networks:
+      localnet:
+        ipv4_address: 192.167.3.0
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
