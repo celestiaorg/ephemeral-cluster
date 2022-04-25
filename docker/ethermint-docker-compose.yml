@@ -51,7 +51,9 @@ services:
             "--optimint.da_config", '{"host":"192.167.3.0", "port":7980}',
             # "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",
-            "--p2p.persistent_peers", "0af630b73e18c66216a51ebc2680f8bdf8345d93@192.167.4.0:26656",
+            "--p2p.seeds", 12D3KooWM4amWPyAo8xTv1dozMfr5YtCR6HSmf7EPq3HaJrKxXym@192.167.4.0:26656,
+            # "--p2p.seeds", "0af630b73e18c66216a51ebc2680f8bdf8345d93@192.167.4.0:26656",
+            # /ip4/192.167.4.0/tcp/26656/p2p/12D3KooWM4amWPyAo8xTv1dozMfr5YtCR6HSmf7EPq3HaJrKxXym   
             "--json-rpc.enable", "true",
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
             "--json-rpc.address", "0.0.0.0:8545",
