@@ -3,15 +3,17 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    image: "ethermint:local1"
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
+            "--log_level", "debug",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
             "--optimint.da_layer", "grpc",
-            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
+            "--optimint.da_config", '{"host":"192.167.3.0", "port":7980}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",
             "--json-rpc.enable", "true",
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
@@ -37,16 +39,18 @@ services:
 
   ethermint1:
     container_name: ethermint1
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    image: "ethermint:local1"
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
+            "--log_level", "debug",
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
             "--optimint.da_layer", "grpc",
-            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
+            "--optimint.da_config", '{"host":"192.167.3.0", "port":7980}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",
-            "--p2p.seeds", 12D3KooWLmV7VruCUapSBaegZtTEpPjBxyXoSsSTsbAHEBBPHxwL@192.167.4.0:26656,
+            "--p2p.seeds", 12D3KooWLmV7VruCUapSBaegZtTEpPjBxyXoSsSTsbAHEBBPHxwL@192.167.4.0:26656, 
             "--json-rpc.enable", "true",
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
             "--json-rpc.address", "0.0.0.0:8545",
