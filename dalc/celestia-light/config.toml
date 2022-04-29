@@ -2,7 +2,7 @@
   Remote = false
   [Core.RemoteConfig]
     Protocol = "tcp"
-    RemoteAddr = "192.167.10.2:26657"
+    RemoteAddr = "192.167.10.0:26657"
 
 [P2P]
   ListenAddresses = ["/ip4/0.0.0.0/tcp/2121", "/ip6/::/tcp/2121"]
@@ -20,7 +20,3 @@
 
 [RPC]
   ListenAddr = ""
-
-[Services]
-  TrustedHash = "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
-  TrustedPeer = "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw"

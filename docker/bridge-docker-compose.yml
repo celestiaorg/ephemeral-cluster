@@ -3,7 +3,8 @@ version: '3'
 services:
   bridge0:
     container_name: bridge0
-    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    # image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=bridge
     command: [
@@ -23,7 +24,8 @@ services:
 
   bridge1:
     container_name: bridge1
-    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    # image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=bridge
     command: [
@@ -43,7 +45,8 @@ services:
 
   bridge2:
     container_name: bridge2
-    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    # image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=bridge
     command: [

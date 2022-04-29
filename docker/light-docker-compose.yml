@@ -3,7 +3,8 @@ version: '3'
 services:
   light0:
     container_name: light0
-    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    # image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
     command: [
@@ -23,7 +24,8 @@ services:
 
   light1:
     container_name: light1
-    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    # image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
     command: [
@@ -43,7 +45,8 @@ services:
         
   light2:
     container_name: light2
-    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    # image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
     command: [

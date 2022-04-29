@@ -3,7 +3,8 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    image: "ethermint:local2"
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
@@ -17,17 +18,12 @@ services:
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
             "--json-rpc.address", "0.0.0.0:8545",
              ]
-    # volumes:
-      #  - ${PWD}/ethermint/ethermint0/config/priv_validator_key.json:/ethermint/config/priv_validator_key.json:ro
-      #  - ${PWD}/ethermint/ethermint0/config/node_key.json:/ethermint/config/node_key.json:ro
-      #  - ${PWD}/ethermint/config.toml:/ethermint/config/config.toml:ro
-      #  - ${PWD}/ethermint/genesis.json:/ethermint/config/genesis.json:ro
     volumes:
-         - ${PWD}/ethermint/temp/config/priv_validator_key.json:/ethermint/config/priv_validator_key.json:ro
-         - ${PWD}/ethermint/temp/config/node_key.json:/ethermint/config/node_key.json:ro
-         - ${PWD}/ethermint/temp/config/config.toml:/ethermint/config/config.toml:ro
-         - ${PWD}/ethermint/temp/config/genesis.json:/ethermint/config/genesis.json:ro
-         - ${PWD}/ethermint/temp/keyring-test:/ethermint/keyring-test:ro
+         - ${PWD}/ethermint/ethermint0/config/priv_validator_key.json:/ethermint/config/priv_validator_key.json:ro
+         - ${PWD}/ethermint/ethermint0/config/node_key.json:/ethermint/config/node_key.json:ro
+         - ${PWD}/ethermint/ethermint0/config/config.toml:/ethermint/config/config.toml:ro
+         - ${PWD}/ethermint/ethermint0/keyring-test:/ethermint/keyring-test:ro
+         - ${PWD}/ethermint/genesis.json:/ethermint/config/genesis.json:ro
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545
@@ -37,7 +33,8 @@ services:
 
   ethermint1:
     container_name: ethermint1
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    image: "ethermint:local2"
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
@@ -52,7 +49,7 @@ services:
             "--json-rpc.address", "0.0.0.0:8545",
              ]
     volumes:
-          - ${PWD}/ethermint/temp/config/genesis.json:/ethermint/config/genesis.json:ro
+          - ${PWD}/ethermint/genesis.json:/ethermint/config/genesis.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.4.1
