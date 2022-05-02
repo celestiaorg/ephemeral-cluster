@@ -3,8 +3,9 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    image: "ethermint:local2"
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    environment:
+      - HOME_DIR=/ethermint
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
@@ -33,8 +34,9 @@ services:
 
   ethermint1:
     container_name: ethermint1
-    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    image: "ethermint:local2"
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    environment:
+      - HOME_DIR=/ethermint
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
