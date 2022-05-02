@@ -7,6 +7,7 @@ services:
     image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
+      - CELESTIA_PRIVATE_GENESIS=54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96
     command: [
             "celestia", "light",
             "--node.store", "/celestia-light",
@@ -28,6 +29,7 @@ services:
     image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
+      - CELESTIA_PRIVATE_GENESIS=54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96
     command: [
             "celestia", "light",
             "--node.store", "/celestia-light",
@@ -49,6 +51,7 @@ services:
     image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
+      - CELESTIA_PRIVATE_GENESIS=54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96
     command: [
             "celestia", "light",
             "--node.store", "/celestia-light",

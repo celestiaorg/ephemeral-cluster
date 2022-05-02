@@ -7,7 +7,9 @@ services:
     # image: "ghcr.io/celestiaorg/dalc:latest"
     image: "dalc:local"
     environment:
+      - NODE_TYPE=light
       - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
+      - CELESTIA_PRIVATE_GENESIS=54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96
     command: [
             "celestia", "light",
             "--node.store", "/dalc",
