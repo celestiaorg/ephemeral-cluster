@@ -4,13 +4,13 @@ services:
   ethermint0:
     container_name: ethermint0
     # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG}"
-    image: "ghcr.io/celestiaorg/ethermint:sha-618a1bb"
-    # image: "ghcr.io/celestiaorg/ethermint:pre-v0.2.0"
-    # environment:
-      # - HOME_DIR=/ethermint
+    # image: "ghcr.io/celestiaorg/ethermint:sha-618a1bb"
+    image: "ghcr.io/celestiaorg/ethermint:pre-v0.2.0"
+    environment:
+      - HOME_DIR=/ethermint
     command: [
             "ethermintd", "start",
-            # "--home", "/ethermint",
+            "--home", "/ethermint",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
@@ -21,8 +21,8 @@ services:
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
             "--json-rpc.address", "0.0.0.0:8545",
              ]
-    # volumes:
-    #   - ${PWD}/ethermint/genesis.json:/ethermint/config/genesis.json:ro
+    volumes:
+      - ${PWD}/ethermint/genesis.json:/ethermint/config/genesis.json:ro
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545

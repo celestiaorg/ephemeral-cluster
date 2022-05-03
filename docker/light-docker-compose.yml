@@ -4,10 +4,8 @@ services:
   light0:
     container_name: light0
     image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
-    # image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
-      - CELESTIA_PRIVATE_GENESIS=54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96
     command: [
             "celestia", "light",
             "--node.store", "/celestia-light",
@@ -26,10 +24,8 @@ services:
   light1:
     container_name: light1
     image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
-    # image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
-      - CELESTIA_PRIVATE_GENESIS=54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96
     command: [
             "celestia", "light",
             "--node.store", "/celestia-light",
@@ -48,10 +44,8 @@ services:
   light2:
     container_name: light2
     image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
-    # image: "ghcr.io/celestiaorg/celestia-node:sha-6703194"
     environment:
       - NODE_TYPE=light
-      - CELESTIA_PRIVATE_GENESIS=54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96
     command: [
             "celestia", "light",
             "--node.store", "/celestia-light",
