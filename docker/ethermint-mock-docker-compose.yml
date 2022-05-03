@@ -4,13 +4,13 @@ services:
   ethermint0:
     container_name: ethermint0
     # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    image: "ethermint:local2"
+    image: "ghcr.io/celestiaorg/ethermint:sha-4cef63f"
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
-            "--optimint.namespace_id", "0000DEADBEEF0000",
+            "--optimint.namespace_id", "0102030405060708",
             "--optimint.da_layer", "grpc",
             "--optimint.da_config", '{"host":"192.167.3.0", "port":7980}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",
@@ -33,13 +33,12 @@ services:
 
   ethermint1:
     container_name: ethermint1
-    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    image: "ethermint:local2"
+    image: "ghcr.io/celestiaorg/ethermint:sha-4cef63f"
     command: [
             "ethermintd", "start",
             "--home", "/ethermint",
             "--optimint.block_time", "30s",
-            "--optimint.namespace_id", "0000DEADBEEF0000",
+            "--optimint.namespace_id", "0102030405060708",
             "--optimint.da_layer", "grpc",
             "--optimint.da_config", '{"host":"192.167.3.0", "port":7980}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",

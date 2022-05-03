@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  ethermint0:
+    container_name: ethermint0
+    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG}"
+    image: "ghcr.io/celestiaorg/ethermint:sha-618a1bb"
+    # image: "ghcr.io/celestiaorg/ethermint:pre-v0.2.0"
+    # environment:
+      # - HOME_DIR=/ethermint
+    command: [
+            "ethermintd", "start",
+            # "--home", "/ethermint",
+            "--optimint.aggregator", "true",
+            "--optimint.block_time", "30s",
+            "--optimint.namespace_id", "0000DEADBEEF0000",
+            "--optimint.da_layer", "grpc",
+            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
+            "--rpc.laddr", "tcp://0.0.0.0:26657",
+            "--json-rpc.enable", "true",
+            "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
+            "--json-rpc.address", "0.0.0.0:8545",
+             ]
+    # volumes:
+    #   - ${PWD}/ethermint/genesis.json:/ethermint/config/genesis.json:ro
+    ports:
+      # Expose the EVM json-rpc server
+      - 8545:8545
+    networks:
+      localnet:
+        ipv4_address: 192.167.4.0
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
