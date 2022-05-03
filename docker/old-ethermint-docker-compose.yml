@@ -3,9 +3,7 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG}"
-    # image: "ghcr.io/celestiaorg/ethermint:sha-618a1bb"
-    image: "ghcr.io/celestiaorg/ethermint:pre-v0.2.0"
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG}"
     environment:
       - HOME_DIR=/ethermint
     command: [
