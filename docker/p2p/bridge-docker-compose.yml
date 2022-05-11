@@ -63,6 +63,7 @@ services:
 
 networks:
   localnet:
+    name: localnet
     driver: bridge
     ipam:
       driver: default

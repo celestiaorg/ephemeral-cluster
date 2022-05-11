@@ -14,7 +14,7 @@ services:
             "start",
             "--headers.trusted-peers",
             "/ip4/192.167.1.0/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
-            "--headers.trusted-hash", 
+            "--headers.trusted-hash",
             "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
@@ -30,6 +30,7 @@ services:
 
 networks:
   localnet:
+    name: localnet
     driver: bridge
     ipam:
       driver: default
