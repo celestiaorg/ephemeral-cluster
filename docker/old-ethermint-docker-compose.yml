@@ -8,7 +8,6 @@ services:
       - HOME_DIR=/ethermint
     command: [
             "ethermintd", "start",
-            "--home", "/ethermint",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
             "--optimint.namespace_id", "0000DEADBEEF0000",
@@ -19,8 +18,6 @@ services:
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
             "--json-rpc.address", "0.0.0.0:8545",
              ]
-    volumes:
-      - ${PWD}/ethermint/genesis.json:/ethermint/config/genesis.json:ro
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545
