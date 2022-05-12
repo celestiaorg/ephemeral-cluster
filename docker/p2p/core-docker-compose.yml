@@ -20,11 +20,11 @@ services:
             "--rpc.laddr", "tcp://0.0.0.0:26657"
         ]
     volumes:
-       - ${PWD}/celestia-app/core0/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - ${PWD}/celestia-app/core0/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core0/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/p2p/core0/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core0/keyring-test:/celestia-app/keyring-test:ro
+       - ${PWD}/celestia-app/p2p/genesis.json:/celestia-app/config/genesis.json:ro
        - ${PWD}/celestia-app/config.toml:/celestia-app/config/config.toml:ro
-       - ${PWD}/celestia-app/core0/keyring-test:/celestia-app/keyring-test:ro
-       - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.0
@@ -47,11 +47,11 @@ services:
             "--rpc.laddr", "tcp://0.0.0.0:26657"
             ]
     volumes:
-       - ${PWD}/celestia-app/core1/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - ${PWD}/celestia-app/core1/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core1/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/p2p/core1/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core1/keyring-test:/celestia-app/keyring-test:ro
+       - ${PWD}/celestia-app/p2p/genesis.json:/celestia-app/config/genesis.json:ro
        - ${PWD}/celestia-app/config.toml:/celestia-app/config/config.toml:ro
-       - ${PWD}/celestia-app/core1/keyring-test:/celestia-app/keyring-test:ro
-       - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.1
@@ -74,11 +74,11 @@ services:
             "--rpc.laddr", "tcp://0.0.0.0:26657"
              ]
     volumes:
-       - ${PWD}/celestia-app/core2/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - ${PWD}/celestia-app/core2/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core2/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/p2p/core2/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core2/keyring-test:/celestia-app/keyring-test:ro
+       - ${PWD}/celestia-app/p2p/genesis.json:/celestia-app/config/genesis.json:ro
        - ${PWD}/celestia-app/config.toml:/celestia-app/config/config.toml:ro
-       - ${PWD}/celestia-app/core2/keyring-test:/celestia-app/keyring-test:ro
-       - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.2
@@ -101,17 +101,18 @@ services:
             "--rpc.laddr", "tcp://0.0.0.0:26657"
              ]
     volumes:
-       - ${PWD}/celestia-app/core3/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - ${PWD}/celestia-app/core3/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core3/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/p2p/core3/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/p2p/core3/keyring-test:/celestia-app/keyring-test:ro
+       - ${PWD}/celestia-app/p2p/genesis.json:/celestia-app/config/genesis.json:ro
        - ${PWD}/celestia-app/config.toml:/celestia-app/config/config.toml:ro
-       - ${PWD}/celestia-app/core3/keyring-test:/celestia-app/keyring-test:ro
-       - ${PWD}/celestia-app/genesis.json:/celestia-app/config/genesis.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.3
 
 networks:
   localnet:
+    name: localnet
     driver: bridge
     ipam:
       driver: default

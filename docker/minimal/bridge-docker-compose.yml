@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  bridge0:
+    container_name: bridge0
+    image: "ghcr.io/celestiaorg/celestia-node:v0.2.0"
+    environment:
+      - NODE_TYPE=bridge
+    command: [
+            "celestia", "bridge",
+            "--node.store", "/celestia-bridge",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.0:26657",
+            "--headers.trusted-hash", 
+            "942D98EA04EE31F523D5B5BF5B5E801CEB5BC4AD060BBF5B656E6C30A0EDCE1B"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/bridge/bridge0/nodekey0:/celestia-bridge/keys/OAZHALLLMV4Q:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.1.0
+
+networks:
+  localnet:
+    name: localnet
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
