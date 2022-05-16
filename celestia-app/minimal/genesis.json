@@ -50,7 +50,7 @@
           "address": "celes1z4t2fnem459xcfj5kknnd5yy8rp4frhdnnkel9",
           "coins": [
             {
-              "denom": "uceles",
+              "denom": "celes",
               "amount": "800000000000"
             }
           ]
@@ -87,7 +87,7 @@
     },
     "crisis": {
       "constant_fee": {
-        "denom": "uceles",
+        "denom": "celes",
         "amount": "1000"
       }
     },
@@ -143,7 +143,7 @@
                   "key": "B8VNFn2zi6NV8eEh27f1hqxq511ewdc6p6PvZmyIDmM="
                 },
                 "value": {
-                  "denom": "uceles",
+                  "denom": "celes",
                   "amount": "5000000000"
                 }
               }
@@ -244,7 +244,7 @@
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
-        "mint_denom": "uceles",
+        "mint_denom": "celes",
         "inflation_rate_change": "0.130000000000000000",
         "inflation_max": "0.200000000000000000",
         "inflation_min": "0.070000000000000000",
@@ -271,7 +271,7 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "uceles"
+        "bond_denom": "celes"
       },
       "last_total_power": "0",
       "last_validator_powers": [],
