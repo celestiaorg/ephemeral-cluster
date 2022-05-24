@@ -3,6 +3,7 @@
 # Script to generate a set of 4 gentxs, node_keys, priv_validator_keys, and application keys as well as a golden genesis file.
 
 chain_id=ephemeral
+token=celestia
 
 # Create the orchestrator node
 mkdir orchestrator
@@ -16,10 +17,10 @@ do
     mkdir $name
     acc_addr=$(./create_key.sh $name | tail -n 1)
     echo $acc_addr > $name/account-address-$name.txt
-    celestia-appd --home orchestrator add-genesis-account $acc_addr 800000000000celes
+    celestia-appd --home orchestrator add-genesis-account $acc_addr 800000000000$token
 done
 
-./fix_genesis.sh orchestrator/config/genesis.json celes
+./fix_genesis.sh orchestrator/config/genesis.json $token
 
 mkdir orchestrator/config/gentx
 
@@ -27,7 +28,7 @@ for name in "${nodes[@]}"
 do
     : 
     cp orchestrator/config/genesis.json $name/config/genesis.json 
-    celestia-appd --home $name gentx $name 5000000000celes --keyring-backend=test --chain-id $chain_id
+    celestia-appd --home $name gentx $name 5000000000$token --keyring-backend=test --chain-id $chain_id
     cp $name/config/gentx/* orchestrator/config/gentx/
 done
 
