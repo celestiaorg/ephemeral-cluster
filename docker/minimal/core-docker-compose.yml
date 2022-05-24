@@ -3,7 +3,7 @@ version: '3'
 services:
   core0:
     container_name: core0
-    image: "ghcr.io/celestiaorg/celestia-app:latest"
+    image: "celestia-app:local"
     environment:
       - MY_VAL_ADDRESS=celes1z4t2fnem459xcfj5kknnd5yy8rp4frhdnnkel9
     command: [
@@ -16,7 +16,7 @@ services:
        - ${PWD}/celestia-app/minimal/single/config/node_key.json:/celestia-app/config/node_key.json:ro
        - ${PWD}/celestia-app/minimal/single/keyring-test:/celestia-app/keyring-test:ro
        - ${PWD}/celestia-app/minimal/genesis.json:/celestia-app/config/genesis.json:ro
-       - ${PWD}/celestia-app/config.toml:/celestia-app/config/config.toml:ro
+       - ${PWD}/celestia-app/minimal/config.toml:/celestia-app/config/config.toml:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.0
