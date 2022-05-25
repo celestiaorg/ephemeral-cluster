@@ -3,7 +3,7 @@ version: '3'
 services:
   bridge0:
     container_name: bridge0
-    image: "celestia-node:local"
+    image: "celestia-node:testnet"
     environment:
       - NODE_TYPE=bridge
     command: [
@@ -13,7 +13,7 @@ services:
             "--core.remote", 
             "tcp://192.167.10.0:26657",
             "--headers.trusted-hash", 
-            "942D98EA04EE31F523D5B5BF5B5E801CEB5BC4AD060BBF5B656E6C30A0EDCE1B"
+            "02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A"
              ]
     volumes:
        - ${PWD}/celestia-node/bridge/bridge0/nodekey0:/celestia-bridge/keys/OAZHALLLMV4Q:ro

@@ -3,7 +3,7 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    image: "celestia-node:local"
+    image: "celestia-node:testnet"
     environment:
       - NODE_TYPE=bridge
       - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
@@ -18,8 +18,6 @@ services:
             "start",
             "--headers.trusted-hash",
             "02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A"
-            #"--headers.trusted-peers",
-            #"/ip4/192.167.1.0/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
              ]
     volumes:
        - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
@@ -27,10 +25,6 @@ services:
        - ${PWD}/dalc/celestia-light/data/LOCK:/dalc/data/LOCK
        - ${PWD}/dalc/celestia-light/config.toml:/dalc/config.toml
        - ${PWD}/dalc/celestia-light/keys/OAZHALLLMV4Q:/dalc/keys/OAZHALLLMV4Q
-
-    expose:
-      - "26658/tcp"
-
     ports:
       - "26658:26658"
 

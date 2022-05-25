@@ -3,14 +3,15 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    image: "ethermint:testnet"
     command: [
             "ethermintd", "start",
             "--optimint.aggregator", "true",
             "--optimint.block_time", "30s",
-            "--optimint.namespace_id", "0000DEADBEEF0000",
-            "--optimint.da_layer", "grpc",
-            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
+            "--optimint.namespace_id", "0001020304050607",
+            "--optimint.da_layer", "celestia",
+            "--optimint.da_config", '{"base_url":"http://192.167.3.0:26658"}',
             "--rpc.laddr", "tcp://0.0.0.0:26657",
             "--json-rpc.enable", "true",
             "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
@@ -28,27 +29,6 @@ services:
     networks:
       localnet:
         ipv4_address: 192.167.4.0
-
-  ethermint1:
-    container_name: ethermint1
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    command: [
-            "ethermintd", "start",
-            "--optimint.block_time", "30s",
-            "--optimint.namespace_id", "0000DEADBEEF0000",
-            "--optimint.da_layer", "grpc",
-            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
-            "--rpc.laddr", "tcp://0.0.0.0:26657",
-            "--p2p.seeds", 12D3KooWLmV7VruCUapSBaegZtTEpPjBxyXoSsSTsbAHEBBPHxwL@192.167.4.0:26656,
-            "--json-rpc.enable", "true",
-            "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
-            "--json-rpc.address", "0.0.0.0:8545",
-             ]
-    volumes:
-          - ${PWD}/ethermint/genesis.json:/root/.ethermint/config/genesis.json:ro
-    networks:
-      localnet:
-        ipv4_address: 192.167.4.1
 
 networks:
   localnet:

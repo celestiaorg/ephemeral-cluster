@@ -29,13 +29,3 @@ sleep 10s
 # Start the DALC node
 echo "Creating DALC node(s)"
 docker compose -f docker/minimal/dalc-docker-compose.yml up -d
-
-echo "Waiting 5s for dalc to start"
-sleep 5s
-
-# Fund the DALC node
-scripts/fund-min-dalc.sh
-
-echo "Sleeping 10s to wait for DALC funding tx to go through"
-sleep 10s
-

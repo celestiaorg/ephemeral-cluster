@@ -3,7 +3,7 @@ version: '3'
 services:
   light0:
     container_name: light0
-    image: "celestia-node:local"
+    image: "celestia-node:testnet"
     environment:
       - NODE_TYPE=light
     command: [
@@ -13,7 +13,7 @@ services:
             "--headers.trusted-peers",
             "/ip4/192.167.1.0/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
             "--headers.trusted-hash", 
-            "942D98EA04EE31F523D5B5BF5B5E801CEB5BC4AD060BBF5B656E6C30A0EDCE1B"
+            "02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light0/nodekey0:/celestia-light/keys/OAZHALLLMV4Q:ro
