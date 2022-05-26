@@ -14,11 +14,8 @@ services:
             "--node.store", "/dalc",
             "--rpc.port", "26658",
             "--core.grpc", "192.167.10.0:9090", 
-            "--core.remote", 
-            "tcp://192.167.10.0:26657",
+            "--core.remote", "tcp://192.167.10.0:26657",
             "start",
-            "--headers.trusted-hash",
-            "02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A"
              ]
     volumes:
        - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
