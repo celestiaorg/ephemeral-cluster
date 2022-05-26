@@ -3,8 +3,8 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    image: "ethermint:testnet"
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ethermint:testnet"
     command: [
             "ethermintd", "start",
             "--optimint.aggregator", "true",

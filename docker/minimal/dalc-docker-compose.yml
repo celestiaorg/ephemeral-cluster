@@ -3,7 +3,8 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    image: "celestia-node:testnet"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-45f23d8"
+    # image: "celestia-node:testnet"
     environment:
       - NODE_TYPE=bridge
       - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
