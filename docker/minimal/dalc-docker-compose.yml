@@ -3,27 +3,23 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    image: "ghcr.io/celestiaorg/celestia-node:sha-45f23d8"
-    # image: "celestia-node:testnet"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-042ebe1"
     environment:
       - NODE_TYPE=bridge
       - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
       - CELESTIA_PRIVATE_GENESIS=02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A
-      - CELESTIA_CUSTOM=ephemeral:02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A:/dns4/andromeda.celestia-devops.dev/tcp/2121/p2p/12D3KooWKvPXtV1yaQ6e3BRNUHa5Phh8daBwBi3KkGaSSkUPys6D
-      # - CELESTIA_CUSTOM=ephemeral:942D98EA04EE31F523D5B5BF5B5E801CEB5BC4AD060BBF5B656E6C30A0EDCE1B:/dns4/andromeda.celestia-devops.dev/tcp/2121/p2p/12D3KooWKvPXtV1yaQ6e3BRNUHa5Phh8daBwBi3KkGaSSkUPys6D
     command: [
-            "celestia", "bridge",
+            "celestia", "bridge", "start",
             "--node.store", "/dalc",
-            "--rpc.port", "26658",
-            "--core.grpc", "192.167.10.0:9090", 
-            "--core.remote", "tcp://192.167.10.0:26657",
-            "start",
+            # "--node.store", "/dalc",
+            # "--rpc.port", "26658",
+            # "--core.grpc", "192.167.10.0:9090", 
+            "--core.remote", "tcp://192.167.10.0:26657"
              ]
     volumes:
-       - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
        - ${PWD}/celestia-app/minimal/single/keyring-test/:/dalc/keys/keyring-test/:ro
-       - ${PWD}/dalc/celestia-light/data/LOCK:/dalc/data/LOCK
-       - ${PWD}/dalc/celestia-light/config.toml:/dalc/config.toml
+      #  - ${PWD}/dalc/celestia-light/data/LOCK:/dalc/data/LOCK
+      #  - ${PWD}/dalc/celestia-light/config.toml:/dalc/config.toml
        - ${PWD}/dalc/celestia-light/keys/OAZHALLLMV4Q:/dalc/keys/OAZHALLLMV4Q
     ports:
       - "26658:26658"

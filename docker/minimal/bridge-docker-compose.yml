@@ -3,19 +3,21 @@ version: '3'
 services:
   bridge0:
     container_name: bridge0
-    image: "celestia-node:testnet"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-042ebe1"
     environment:
       - NODE_TYPE=bridge
+      - CELESTIA_PRIVATE_GENESIS=02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A
     command: [
             "celestia", "bridge",
             "--node.store", "/celestia-bridge",
             "start",
             "--core.remote", 
             "tcp://192.167.10.0:26657",
-            "--headers.trusted-hash", 
-            "02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A"
+            "--keyring.accname",
+            "my_celes_key"
              ]
     volumes:
+       - ${PWD}/celestia-app/minimal/single/keyring-test/:/celestia-bridge/keys/keyring-test/:ro
        - ${PWD}/celestia-node/bridge/bridge0/nodekey0:/celestia-bridge/keys/OAZHALLLMV4Q:ro
     networks:
       localnet:
