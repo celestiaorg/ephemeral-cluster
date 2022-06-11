@@ -3,24 +3,20 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    image: "ghcr.io/celestiaorg/celestia-node:sha-042ebe1"
+    image: "ghcr.io/celestiaorg/celestia-node:sha-a2dbbbe"
     environment:
       - NODE_TYPE=bridge
       - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
       - CELESTIA_PRIVATE_GENESIS=02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A
     command: [
             "celestia", "bridge", "start",
-            "--node.store", "/dalc",
-            # "--node.store", "/dalc",
-            # "--rpc.port", "26658",
-            # "--core.grpc", "192.167.10.0:9090", 
-            "--core.remote", "tcp://192.167.10.0:26657"
+            "--node.store", "/celestia-bridge",
+            "--core.remote", "tcp://192.167.10.0:26657",
+            "--core.grpc", "tcp://192.167.10.0:9090",
              ]
     volumes:
-       - ${PWD}/celestia-app/minimal/single/keyring-test/:/dalc/keys/keyring-test/:ro
-      #  - ${PWD}/dalc/celestia-light/data/LOCK:/dalc/data/LOCK
-      #  - ${PWD}/dalc/celestia-light/config.toml:/dalc/config.toml
-       - ${PWD}/dalc/celestia-light/keys/OAZHALLLMV4Q:/dalc/keys/OAZHALLLMV4Q
+       - ${PWD}/celestia-app/minimal/single/keyring-test/:/celestia-bridge/keys/keyring-test/:ro
+       - ${PWD}/dalc/celestia-light/keys/OAZHALLLMV4Q:/celestia-bridge/keys/OAZHALLLMV4Q
     ports:
       - "26658:26658"
 
@@ -36,4 +32,4 @@ networks:
       driver: default
       config:
       -
-        subnet: 192.167.10.0/16
+        subnet: 192.167.0.0/16
