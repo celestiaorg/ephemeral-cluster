@@ -4,7 +4,6 @@ services:
   ethermint0:
     container_name: ethermint0
     image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    # image: "ethermint:local"
     environment:
       - HOME_DIR=/root/.ethermintd
     command: [

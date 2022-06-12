@@ -4,7 +4,6 @@ services:
   core0:
     container_name: core0
     image: "ghcr.io/celestiaorg/celestia-app-ephemeral:latest"
-    # image: "celestia-app:testnet"
     environment:
       - MY_VAL_ADDRESS=celes1z4t2fnem459xcfj5kknnd5yy8rp4frhdnnkel9
     command: [
