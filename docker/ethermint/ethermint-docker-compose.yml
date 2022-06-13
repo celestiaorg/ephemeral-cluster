@@ -9,6 +9,7 @@ services:
       - HOME_DIR=/root/.ethermintd
     command: [
             "ethermintd", "start",
+            "--keyring-backend", "test"
              ]
     volumes:
          - ${PWD}/ethermint/ethermint1/config/priv_validator_key.json:/root/.ethermintd/config/priv_validator_key.json:ro
