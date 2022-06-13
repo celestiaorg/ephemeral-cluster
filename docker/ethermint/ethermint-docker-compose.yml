@@ -4,17 +4,18 @@ services:
   ethermint0:
     container_name: ethermint0
     image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ethermint:rebase"
     environment:
       - HOME_DIR=/root/.ethermintd
     command: [
             "ethermintd", "start",
              ]
     volumes:
-         - ${PWD}/ethermint/ethermint0/config/priv_validator_key.json:/root/.ethermintd/config/priv_validator_key.json:ro
-         - ${PWD}/ethermint/ethermint0/config/node_key.json:/root/.ethermintd/config/node_key.json:ro
-         - ${PWD}/ethermint/ethermint0/config/config.toml:/root/.ethermintd/config/config.toml:ro
-         - ${PWD}/ethermint/ethermint0/keyring-test:/root/.ethermintd/keyring-test:ro
-         - ${PWD}/ethermint/genesis.json:/root/.ethermintd/config/genesis.json:ro
+         - ${PWD}/ethermint/ethermint1/config/priv_validator_key.json:/root/.ethermintd/config/priv_validator_key.json:ro
+         - ${PWD}/ethermint/ethermint1/config/node_key.json:/root/.ethermintd/config/node_key.json:ro
+         - ${PWD}/ethermint/ethermint1/config/config.toml:/root/.ethermintd/config/config.toml:ro
+         - ${PWD}/ethermint/ethermint1/config/genesis.json:/root/.ethermintd/config/genesis.json:ro
+         - ${PWD}/ethermint/ethermint1/keyring-test:/root/.ethermintd/keyring-test:ro
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545
