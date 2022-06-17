@@ -8,6 +8,7 @@ services:
       - MY_VAL_ADDRESS=celes1z4t2fnem459xcfj5kknnd5yy8rp4frhdnnkel9
     command: [
             "start",
+            "--home", "/celestia-app",
             "--moniker", "core0",
             "--rpc.laddr", "tcp://0.0.0.0:26657"
         ]
