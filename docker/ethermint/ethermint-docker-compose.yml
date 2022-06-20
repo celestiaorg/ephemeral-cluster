@@ -12,11 +12,11 @@ services:
             "--keyring-backend", "test"
              ]
     volumes:
-         - ${PWD}/ethermint/ethermint1/config/priv_validator_key.json:/root/.ethermintd/config/priv_validator_key.json:ro
-         - ${PWD}/ethermint/ethermint1/config/node_key.json:/root/.ethermintd/config/node_key.json:ro
-         - ${PWD}/ethermint/ethermint1/config/config.toml:/root/.ethermintd/config/config.toml:ro
-         - ${PWD}/ethermint/ethermint1/config/genesis.json:/root/.ethermintd/config/genesis.json:ro
-         - ${PWD}/ethermint/ethermint1/keyring-test:/root/.ethermintd/keyring-test:ro
+         - ${PWD}/ethermint/config/priv_validator_key.json:/root/.ethermintd/config/priv_validator_key.json:ro
+         - ${PWD}/ethermint/config/node_key.json:/root/.ethermintd/config/node_key.json:ro
+         - ${PWD}/ethermint/config/config.toml:/root/.ethermintd/config/config.toml:ro
+         - ${PWD}/ethermint/config/genesis.json:/root/.ethermintd/config/genesis.json:ro
+         - ${PWD}/ethermint/keyring-test:/root/.ethermintd/keyring-test:ro
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545
