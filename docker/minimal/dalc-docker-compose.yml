@@ -3,8 +3,9 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
+    image: "ghcr.io/celestiaorg/celestia-node:sha-5106182"
     # image: "ghcr.io/celestiaorg/celestia-node:sha-a2dbbbe"
-    image: "celestia-node:local"
+    # image: "celestia-node:local"
     environment:
       - NODE_TYPE=bridge
       - CELESTIA_PRIVATE_GENESIS=07F89A81EBC049DE20ADA631DF3DB160883CE1EEAF13719C3E7179E27EA278C3

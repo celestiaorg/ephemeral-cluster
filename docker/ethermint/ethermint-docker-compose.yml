@@ -3,11 +3,13 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    image: "ethermint:rebase"
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    # image: "ethermint:rebase"
+    # image: "ethermint:local-optimint-2"
     environment:
       - HOME_DIR=/root/.ethermintd
     command: [
+            # "sleep", "36000"
             "ethermintd", "start",
             "--keyring-backend", "test"
              ]
