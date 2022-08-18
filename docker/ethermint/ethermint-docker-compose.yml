@@ -4,51 +4,24 @@ services:
   ethermint0:
     container_name: ethermint0
     image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    environment:
+      - HOME_DIR=/root/.ethermintd
     command: [
             "ethermintd", "start",
-            "--optimint.aggregator", "true",
-            "--optimint.block_time", "30s",
-            "--optimint.namespace_id", "0000DEADBEEF0000",
-            "--optimint.da_layer", "grpc",
-            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
-            "--rpc.laddr", "tcp://0.0.0.0:26657",
-            "--json-rpc.enable", "true",
-            "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
-            "--json-rpc.address", "0.0.0.0:8545",
+            "--keyring-backend", "test"
              ]
     volumes:
-         - ${PWD}/ethermint/ethermint0/config/priv_validator_key.json:/root/.ethermint/config/priv_validator_key.json:ro
-         - ${PWD}/ethermint/ethermint0/config/node_key.json:/root/.ethermint/config/node_key.json:ro
-         - ${PWD}/ethermint/ethermint0/config/config.toml:/root/.ethermint/config/config.toml:ro
-         - ${PWD}/ethermint/ethermint0/keyring-test:/root/.ethermint/keyring-test:ro
-         - ${PWD}/ethermint/genesis.json:/root/.ethermint/config/genesis.json:ro
+         - ${PWD}/ethermint/config/priv_validator_key.json:/root/.ethermintd/config/priv_validator_key.json:ro
+         - ${PWD}/ethermint/config/node_key.json:/root/.ethermintd/config/node_key.json:ro
+         - ${PWD}/ethermint/config/config.toml:/root/.ethermintd/config/config.toml:ro
+         - ${PWD}/ethermint/config/genesis.json:/root/.ethermintd/config/genesis.json:ro
+         - ${PWD}/ethermint/keyring-test:/root/.ethermintd/keyring-test:ro
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545
     networks:
       localnet:
         ipv4_address: 192.167.4.0
-
-  ethermint1:
-    container_name: ethermint1
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
-    command: [
-            "ethermintd", "start",
-            "--optimint.block_time", "30s",
-            "--optimint.namespace_id", "0000DEADBEEF0000",
-            "--optimint.da_layer", "grpc",
-            "--optimint.da_config", '{"host":"192.167.3.0", "port":4200}',
-            "--rpc.laddr", "tcp://0.0.0.0:26657",
-            "--p2p.seeds", 12D3KooWLmV7VruCUapSBaegZtTEpPjBxyXoSsSTsbAHEBBPHxwL@192.167.4.0:26656,
-            "--json-rpc.enable", "true",
-            "--json-rpc.api", "eth,txpool,personal,net,web3,miner",
-            "--json-rpc.address", "0.0.0.0:8545",
-             ]
-    volumes:
-          - ${PWD}/ethermint/genesis.json:/root/.ethermint/config/genesis.json:ro
-    networks:
-      localnet:
-        ipv4_address: 192.167.4.1
 
 networks:
   localnet:
@@ -58,4 +31,4 @@ networks:
       driver: default
       config:
       -
-        subnet: 192.167.10.0/16
+        subnet: 192.167.0.0/16

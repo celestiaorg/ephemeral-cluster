@@ -3,20 +3,21 @@ version: '3'
 services:
   core0:
     container_name: core0
-    image: "ghcr.io/celestiaorg/celestia-app:latest"
+    image: "ghcr.io/celestiaorg/celestia-app@sha256:9166143fe2a6502a2e9edad84db4973ae1a06f044faa5dee9d20190f33906671"
     environment:
-      - MY_VAL_ADDRESS=celes1z4t2fnem459xcfj5kknnd5yy8rp4frhdnnkel9
+      - CELESTIA_HOME=/root/.celestia-app
     command: [
             "start",
-            "--moniker", "core0",
+            "--home", "/root/.celestia-app",
             "--rpc.laddr", "tcp://0.0.0.0:26657"
         ]
     volumes:
-       - ${PWD}/celestia-app/minimal/single/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - ${PWD}/celestia-app/minimal/single/config/node_key.json:/celestia-app/config/node_key.json:ro
-       - ${PWD}/celestia-app/minimal/single/keyring-test:/celestia-app/keyring-test:ro
-       - ${PWD}/celestia-app/minimal/genesis.json:/celestia-app/config/genesis.json:ro
-       - ${PWD}/celestia-app/config.toml:/celestia-app/config/config.toml:ro
+       - ${PWD}/celestia-app/private/config/priv_validator_key.json:/root/.celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/private/config/node_key.json:/root/.celestia-app/config/node_key.json:ro
+       - ${PWD}/celestia-app/private/config/genesis.json:/root/.celestia-app/config/genesis.json:ro
+       - ${PWD}/celestia-app/private/config/config.toml:/root/.celestia-app/config/config.toml:ro
+       - ${PWD}/celestia-app/private/config/client.toml:/root/.celestia-app/config/client.toml:ro
+       - ${PWD}/celestia-app/private/keyring-test:/root/.celestia-app/keyring-test:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.0

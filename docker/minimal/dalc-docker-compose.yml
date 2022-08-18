@@ -3,26 +3,21 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    image: "ghcr.io/celestiaorg/dalc:sha-b46432b"
+    # Includes PR https://github.com/celestiaorg/celestia-node/pull/845
+    image: "ghcr.io/celestiaorg/celestia-node:sha-5106182"
     environment:
-      - NODE_TYPE=light
-      - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
-      - CELESTIA_PRIVATE_GENESIS=942D98EA04EE31F523D5B5BF5B5E801CEB5BC4AD060BBF5B656E6C30A0EDCE1B
+      - NODE_TYPE=bridge
+      - CELESTIA_PRIVATE_GENESIS=07F89A81EBC049DE20ADA631DF3DB160883CE1EEAF13719C3E7179E27EA278C3
     command: [
-            "celestia", "light",
-            "--node.store", "/dalc",
-            "start",
-            "--headers.trusted-peers",
-            "/ip4/192.167.1.0/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
-            "--headers.trusted-hash",
-            "942D98EA04EE31F523D5B5BF5B5E801CEB5BC4AD060BBF5B656E6C30A0EDCE1B"
+            "celestia", "bridge", "start",
+            "--core.remote", "tcp://192.167.10.0:26657",
+            "--core.grpc", "tcp://192.167.10.0:9090",
+            "--keyring.accname", "key-1"
              ]
     volumes:
-       - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
-       - ${PWD}/dalc/optimint_server.toml:/dalc/optimint_server.toml
-       - ${PWD}/dalc/celestia-light/data/LOCK:/dalc/data/LOCK
-       - ${PWD}/dalc/celestia-light/config.toml:/dalc/config.toml
-       - ${PWD}/dalc/celestia-light/keys/OAZHALLLMV4Q:/dalc/keys/OAZHALLLMV4Q
+       - ${PWD}/celestia-app/private/keyring-test:/root/.celestia-bridge/keys/keyring-test:ro
+    ports:
+      - "26658:26658"
 
     networks:
       localnet:
@@ -36,4 +31,4 @@ networks:
       driver: default
       config:
       -
-        subnet: 192.167.10.0/16
+        subnet: 192.167.0.0/16
