@@ -3,18 +3,20 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    # Includes PR https://github.com/celestiaorg/celestia-node/pull/845
     image: "celestia-node:v0.4.1"
     environment:
       - NODE_TYPE=bridge
-      # - CELESTIA_PRIVATE_GENESIS=07F89A81EBC049DE20ADA631DF3DB160883CE1EEAF13719C3E7179E27EA278C3
     command: [
-            "celestia", "bridge", "start",
-            "--core.ip", "tcp://192.167.10.0",
-            "--keyring.accname", "key-1"
+            "celestia", "bridge",
+            "start",
+            "--node.network", "private",
+            "--core.ip", "192.167.10.0",
+            "--keyring.accname", "key-1",
+            "--node.store", "/root/.celestia-bridge-arabica"
              ]
     volumes:
        - ${PWD}/celestia-app/private/keyring-test:/root/.celestia-bridge-arabica/keys/keyring-test:ro
+       - ${PWD}/celestia-node/bridge/config.toml:/root/.celestia-bridge-arabica/config.toml
     ports:
       - "26658:26658"
 

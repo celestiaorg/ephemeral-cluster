@@ -9,14 +9,14 @@ echo "Creating core node(s)"
 docker compose -f docker/minimal/core-docker-compose.yml up -d
 
 echo "Waiting 5s for core nodes to produce a block"
-sleep 5s
+sleep 30
 
 # Start the DALC node
 echo "Creating DALC node(s)"
 docker compose -f docker/minimal/dalc-docker-compose.yml up -d
 
 echo "Waiting 5s for dalc to start"
-sleep 5s
+sleep 5
 
 # Start the regular ethermint node
 echo "Creating Ethermint node(s)"
