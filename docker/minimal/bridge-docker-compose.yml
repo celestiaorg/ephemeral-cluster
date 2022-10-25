@@ -1,27 +1,27 @@
 version: '3'
 
 services:
-  bridge0:
-    container_name: bridge0
-    image: "ghcr.io/celestiaorg/celestia-node:sha-042ebe1"
+  dalc0:
+    container_name: dalc0
+    image: "ghcr.io/celestiaorg/celestia-node:sha-f4e582e"
     environment:
       - NODE_TYPE=bridge
-      - CELESTIA_PRIVATE_GENESIS=02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A
+      - "CELESTIA_CUSTOM=private:B37ADC527B29B88D91CC758D1F4190D2C48CEEEB981175AEF1159099B09E1D04"
     command: [
             "celestia", "bridge",
-            "--node.store", "/celestia-bridge",
             "start",
-            "--core.remote", 
-            "tcp://192.167.10.0:26657",
-            "--keyring.accname",
-            "my_celes_key"
+            "--core.ip", "192.167.10.0",
+            "--keyring.accname", "key-1",
              ]
     volumes:
-       - ${PWD}/celestia-app/minimal/single/keyring-test/:/celestia-bridge/keys/keyring-test/:ro
-       - ${PWD}/celestia-node/bridge/bridge0/nodekey0:/celestia-bridge/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-app/private/keyring-test:/root/.celestia-bridge-private/keys/keyring-test:ro
+       - ${PWD}/celestia-node/bridge/config.toml:/root/.celestia-bridge-private/config.toml
+    ports:
+      - "26658:26658"
+
     networks:
       localnet:
-        ipv4_address: 192.167.1.0
+        ipv4_address: 192.167.3.0
 
 networks:
   localnet:

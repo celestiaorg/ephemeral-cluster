@@ -3,7 +3,7 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG-latest}"
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG:-rollmint-2b2b35b}"
     environment:
       - HOME_DIR=/root/.ethermintd
     command: [
@@ -19,6 +19,8 @@ services:
     ports:
       # Expose the EVM json-rpc server
       - 8545:8545
+      # Expose websocket
+      - 8546:8546
     networks:
       localnet:
         ipv4_address: 192.167.4.0

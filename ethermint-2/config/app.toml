@@ -8,16 +8,17 @@
 # The minimum gas prices a validator is willing to accept for processing a
 # transaction. A transaction's fees must meet the minimum of any denomination
 # specified in this config (e.g. 0.25token1;0.0001token2).
-minimum-gas-prices = "0ucls"
+minimum-gas-prices = "0aphoton"
 
-# default: the last 362880 states are kept, pruning at 10 block intervals
+# default: the last 100 states are kept in addition to every 500th state; pruning at 10 block intervals
 # nothing: all historic states will be saved, nothing will be deleted (i.e. archiving node)
-# everything: 2 latest states will be kept; pruning at 10 block intervals.
-# custom: allow pruning options to be manually specified through 'pruning-keep-recent', and 'pruning-interval'
+# everything: all saved states will be deleted, storing only the current and previous state; pruning at 10 block intervals
+# custom: allow pruning options to be manually specified through 'pruning-keep-recent', 'pruning-keep-every', and 'pruning-interval'
 pruning = "default"
 
 # These are applied if and only if the pruning strategy is custom.
 pruning-keep-recent = "0"
+pruning-keep-every = "0"
 pruning-interval = "0"
 
 # HaltHeight contains a non-zero block height at which a node will gracefully
@@ -63,12 +64,6 @@ index-events = []
 # Default cache size is 50mb.
 iavl-cache-size = 781250
 
-# AppDBBackend defines the database backend type to use for the application and snapshots DBs.
-# An empty string indicates that a fallback will be used.
-# First fallback is the deprecated compile-time types.DBBackend value.
-# Second fallback (if the types.DBBackend also isn't set), is the db-backend value set in Tendermint's config.toml.
-app-db-backend = ""
-
 ###############################################################################
 ###                         Telemetry Configuration                         ###
 ###############################################################################
@@ -110,7 +105,7 @@ global-labels = [
 [api]
 
 # Enable defines if the API server should be enabled.
-enable = true
+enable = false
 
 # Swagger defines if swagger documentation should automatically be registered.
 swagger = false
@@ -157,18 +152,6 @@ retries = 3
 # Offline defines if Rosetta server should run in offline mode.
 offline = false
 
-# EnableDefaultSuggestedFee defines if the server should suggest fee by default.
-# If 'construction/medata' is called without gas limit and gas price,
-# suggested fee based on gas-to-suggest and denom-to-suggest will be given.
-enable-fee-suggestion = false
-
-# GasToSuggest defines gas limit when calculating the fee
-gas-to-suggest = 210000
-
-# DenomToSuggest defines the defult denom for fee suggestion.
-# Price must be in minimum-gas-prices.
-denom-to-suggest = "uatom"
-
 ###############################################################################
 ###                           gRPC Configuration                            ###
 ###############################################################################
@@ -180,14 +163,6 @@ enable = true
 
 # Address defines the gRPC server address to bind to.
 address = "0.0.0.0:9090"
-
-# MaxRecvMsgSize defines the max message size in bytes the server can receive.
-# The default value is 10MB.
-max-recv-msg-size = "10485760"
-
-# MaxSendMsgSize defines the max message size in bytes the server can send.
-# The default value is math.MaxInt32.
-max-send-msg-size = "2147483647"
 
 ###############################################################################
 ###                        gRPC Web Configuration                           ###
@@ -214,8 +189,80 @@ enable-unsafe-cors = false
 [state-sync]
 
 # snapshot-interval specifies the block interval at which local state sync snapshots are
-# taken (0 to disable).
-snapshot-interval = 1500
+# taken (0 to disable). Must be a multiple of pruning-keep-every.
+snapshot-interval = 0
 
 # snapshot-keep-recent specifies the number of recent snapshots to keep and serve (0 to keep all).
 snapshot-keep-recent = 2
+
+###############################################################################
+###                             EVM Configuration                           ###
+###############################################################################
+
+[evm]
+
+# Tracer defines the 'vm.Tracer' type that the EVM will use when the node is run in
+# debug mode. To enable tracing use the '--evm.tracer' flag when starting your node.
+# Valid types are: json|struct|access_list|markdown
+tracer = ""
+
+# MaxTxGasWanted defines the gas wanted for each eth tx returned in ante handler in check tx mode.
+max-tx-gas-wanted = 500000
+
+###############################################################################
+###                           JSON RPC Configuration                        ###
+###############################################################################
+
+[json-rpc]
+
+# Enable defines if the gRPC server should be enabled.
+enable = true
+
+# Address defines the EVM RPC HTTP server address to bind to.
+address = "0.0.0.0:8545"
+
+# Address defines the EVM WebSocket server address to bind to.
+ws-address = "0.0.0.0:8546"
+
+# API defines a list of JSON-RPC namespaces that should be enabled
+# Example: "eth,txpool,personal,net,debug,web3"
+api = "eth,net,web3"
+
+# GasCap sets a cap on gas that can be used in eth_call/estimateGas (0=infinite). Default: 25,000,000.
+gas-cap = 25000000
+
+# EVMTimeout is the global timeout for eth_call. Default: 5s.
+evm-timeout = "5s"
+
+# TxFeeCap is the global tx-fee cap for send transaction. Default: 1eth.
+txfee-cap = 1
+
+# FilterCap sets the global cap for total number of filters that can be created
+filter-cap = 200
+
+# FeeHistoryCap sets the global cap for total number of blocks that can be fetched
+feehistory-cap = 100
+
+# LogsCap defines the max number of results can be returned from single 'eth_getLogs' query.
+logs-cap = 10000
+
+# BlockRangeCap defines the max block range allowed for 'eth_getLogs' query.
+block-range-cap = 10000
+
+# HTTPTimeout is the read/write timeout of http json-rpc server.
+http-timeout = "30s"
+
+# HTTPIdleTimeout is the idle timeout of http json-rpc server.
+http-idle-timeout = "2m0s"
+
+###############################################################################
+###                             TLS Configuration                           ###
+###############################################################################
+
+[tls]
+
+# Certificate path defines the cert.pem file path for the TLS configuration.
+certificate-path = ""
+
+# Key path defines the key.pem file path for the TLS configuration.
+key-path = ""
