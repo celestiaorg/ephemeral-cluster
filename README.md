@@ -2,6 +2,8 @@
 
 This repository contains configuration files and related scripts to starting Celestia and/or Ethermint clusters using docker compose 
 
+> NOTE: Previous iterations of this repo supported a lot more configs, they were infrequently to never used and unmaintained. Repo has been cleaned up to minimally useful functionality.
+
 ## Dependencies
 You must have both Docker and Docker Compose v2 installed
 
@@ -22,9 +24,9 @@ This is done for you if you use the provided setup scripts in `scripts/`
 
 There are 4 different options for clusters to run.
 
-> ⚠️ Currently all clusters setup 4x core (celestia-app) nodes because I haven't created a different genesis config yet.
 
 ## Minimal Celestia Cluster
+> Not currently functional
 ![](min-celestia.png "Minimum Viable Celestia Cluster")
 *Minimal Celestia Cluster*
 ```
@@ -32,14 +34,6 @@ scripts/minimal-celestia.sh
 ```
 
 This is the most minimal cluster possible.
-## Celestia Cluster w/ P2P Communication
-```
-scripts/p2p-celestia.sh
-```
-
-![](p2p-celestia.png "Multi-node Celestia Cluster w/ P2P")
-*Multi-node Celestia Cluster w/ P2P*
-
 
 ## Minimal Ethermint Cluster
 
@@ -51,22 +45,14 @@ To setup the docker compose cluster run
 scripts/minimal-ethermint.sh
 ```
 
-## Ethermint Cluster w/ P2P Communication
-```
-scripts/p2p-ethermint.sh
-```
-
-![](p2p-ethermint.png "Multi-node Ethermint Cluster w/ P2P")
-*Multi-node Ethermint Cluster w/ P2P*
-
 # Cluster(s) Information
 
 Each container in the cluster has its own static IP Address. Clusters with only a single instance of a given type use the lowest number in the range. 
 | Component | IP Address |
 | --------- | ---------- |
-| Core Node(s) | 192.167.10.0 - 192.167.10.3 |
-| Bridge Nodes(s) | 192.167.1.0 - 192.167.1.2 |
-| Light Nodes(s) | 192.167.2.0 - 192.167.2.2 |
+| Core Node | 192.167.10.0 |
+| Bridge Nodes | 192.167.1.0 |
+| Light Nodes | 192.167.2.0 |
 | DALC  | 192.167.3.0 |
 | Ethermint | 192.167.4.0 |
 
@@ -93,11 +79,6 @@ docker run -it --network docker_localnet curlimages/curl:7.80.0 bash
 
 > This assumes you're using one of the Ethermint clusters
 
-First get the Ethermint validator's private key
-```bash
-export PRIV_KEY=$(scripts/val-priv-key.sh)
-```
-
 You can follow the logs for the `ethermint` container with
 
 ```bash
@@ -116,6 +97,7 @@ Set your environment variables
 
 ```bash
 export ETH_RPC_URL=http://127.0.0.1:8545
+export PRIV_KEY=$(docker exec ethermint0 bash -c 'ethermintd keys unsafe-export-eth-key mykey --keyring-backend test')
 # And the PRIV_KEY from above
 ```
 
@@ -230,5 +212,3 @@ To stop the cluster run
 ```
 scripts/teardown-docker-cluster.sh
 ```
-
-<!-- (TODO): Using the Ethermint Debug Container -->
