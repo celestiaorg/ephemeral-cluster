@@ -9,15 +9,15 @@ chmod 0600 dalc/celestia-light/keys/*
 echo "Creating core node(s)"
 docker compose -f docker/minimal/core-docker-compose.yml up -d 
 
-echo "Waiting 30s for core nodes to produce a block"
-sleep 30s
+echo "Waiting 5s for core nodes to produce a block"
+sleep 5
 
 # Start bridge0 bridge node
 echo "Creating bridge node(s)"
 docker compose -f docker/minimal/bridge-docker-compose.yml up -d
 
 echo "Waiting 10s for bridge nodes to sync a block"
-sleep 10s
+sleep 10
 
 # Start light0 light node
 echo "Creating light node(s)"
