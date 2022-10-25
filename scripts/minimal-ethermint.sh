@@ -5,8 +5,8 @@ CONTAINERS=$(docker ps -q --filter "name=dalc0" --filter "name=ethermint0" --fil
 if [ ! -z "$CONTAINERS" ]
 then
     echo "Killing currently running ethermint cluster containers"
-    docker kill $CONTAINERS >&-
-    docker rm $CONTAINERS >&-
+    docker kill $CONTAINERS &> /dev/null
+    docker rm $CONTAINERS &> /dev/null
 fi
 
 # Start core0 core node
