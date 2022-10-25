@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# If we have containers currently up kill them
+CONTAINERS=$(docker ps -q --filter "name=dalc0" --filter "name=ethermint0" --filter "name=core0")
+if [ ! -z "$CONTAINERS" ]
+then
+    echo "Killing currently running ethermint cluster containers"
+    docker kill $CONTAINERS >&-
+    docker rm $CONTAINERS >&-
+fi
+
 # Start core0 core node
 echo "Creating core node"
 docker compose -f docker/minimal/core-docker-compose.yml up -d
