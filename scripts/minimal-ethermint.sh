@@ -9,7 +9,7 @@ echo "Creating core node(s)"
 docker compose -f docker/minimal/core-docker-compose.yml up -d
 
 echo "Waiting 5s for core nodes to produce a block"
-sleep 30
+sleep 5
 
 # Start the DALC node
 echo "Creating DALC node(s)"
