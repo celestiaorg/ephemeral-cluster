@@ -62,6 +62,7 @@ EOF
 
 # Completely replace local ethermint, and cleanup
 GIT_TOP=$(git rev-parse --show-toplevel)
-rm -rf $GIT_TOP/ethermint
-cp -rf $DIRECTORY $GIT_TOP/ethermint/
+CONFIG_DIR=$GIT_TOP/.ethermintd
+rm -rf $CONFIG_DIR
+cp -rf $DIRECTORY $CONFIG_DIR/
 rm -rf $DIRECTORY
