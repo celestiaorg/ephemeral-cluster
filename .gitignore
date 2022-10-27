@@ -48,3 +48,6 @@ dalc/celestia-light/data/000000.vlog
 dalc/celestia-light/data/KEYREGISTRY
 dalc/celestia-light/data/MANIFEST
 dalc/celestia-light/lock
+
+# Don't include the generated ethermint config
+ethermint

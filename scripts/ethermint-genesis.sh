@@ -9,7 +9,16 @@ DIRECTORY=/tmp/.ethermintd
 ethermintd init $MONIKER --chain-id=$CHAINID --home $DIRECTORY
 ethermintd keys add mykey --keyring-backend $KEYRING --home $DIRECTORY
 ethermintd add-genesis-account mykey 100000000000000000000000000aphoton --keyring-backend $KEYRING --home $DIRECTORY
+
+# Change parameter token denominations to aphoton
+cat $DIRECTORY/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="aphoton"' > $DIRECTORY/config/tmp_genesis.json && mv $DIRECTORY/config/tmp_genesis.json $DIRECTORY/config/genesis.json
+cat $DIRECTORY/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="aphoton"' > $DIRECTORY/config/tmp_genesis.json && mv $DIRECTORY/config/tmp_genesis.json $DIRECTORY/config/genesis.json
+cat $DIRECTORY/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="aphoton"' > $DIRECTORY/config/tmp_genesis.json && mv $DIRECTORY/config/tmp_genesis.json $DIRECTORY/config/genesis.json
+cat $DIRECTORY/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="aphoton"' > $DIRECTORY/config/tmp_genesis.json && mv $DIRECTORY/config/tmp_genesis.json $DIRECTORY/config/genesis.json
+
 ethermintd gentx $KEY 1000000000000000000000aphoton --keyring-backend $KEYRING --chain-id $CHAINID --home $DIRECTORY
+ethermintd collect-gentxs --home $DIRECTORY 
+ethermintd validate-genesis --home $DIRECTORY 
 
 
 CONFIG_LOCATION=$DIRECTORY/config/config.toml
