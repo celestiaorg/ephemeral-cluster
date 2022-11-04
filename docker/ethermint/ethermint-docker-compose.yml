@@ -4,7 +4,7 @@ services:
   ethermint0:
     container_name: ethermint0
     # image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG:-rollmint-2b2b35b}"
-    image: ethermint:latest
+    image: ethermint:eth-hashes
     environment:
       - HOME_DIR=/root/.ethermintd
     command: [

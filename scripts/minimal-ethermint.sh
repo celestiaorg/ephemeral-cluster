@@ -9,6 +9,15 @@ then
     docker rm $CONTAINERS &> /dev/null
 fi
 
+# Make sure ethermint genesis files exist if not create them
+GIT_TOP=$(git rev-parse --show-toplevel)
+CONFIG_DIR=$GIT_TOP/.ethermintd
+if [ ! -d $CONFIG_DIR ]
+then
+    source $GIT_TOP/scripts/ethermint-genesis.sh
+fi
+
+
 # Start core0 core node
 echo "Creating core node"
 docker compose -f docker/minimal/core-docker-compose.yml up -d
