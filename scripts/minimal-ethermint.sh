@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # If we have containers currently up kill them
-CONTAINERS=$(docker ps -a -q --filter "name=core0" --filter "name=ethermint0" --filter "name=core0")
+CONTAINERS=$(docker ps -a -q --filter "name=bridge0" --filter "name=ethermint0" --filter "name=core0")
 if [ ! -z "$CONTAINERS" ]
 then
     echo "Killing currently running ethermint cluster containers"
