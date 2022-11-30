@@ -3,7 +3,7 @@ version: '3'
 services:
   core0:
     container_name: core0
-    image: "celestia-app:v0.7.0"
+    image: "ghcr.io/celestiaorg/celestia-app:v0.10.0-rc1"
     environment:
       - CELESTIA_HOME=/root/.celestia-app
     command: [
@@ -12,7 +12,7 @@ services:
             "--rpc.laddr", "tcp://0.0.0.0:26657"
         ]
     volumes:
-       - ${PWD}/celestia-app/private/config/priv_validator_key.json:/root/.celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/private/config/priv_validator_key.json:/root/.celestia-app/data/priv_validator_key.json:ro
        - ${PWD}/celestia-app/private/config/node_key.json:/root/.celestia-app/config/node_key.json:ro
        - ${PWD}/celestia-app/private/config/genesis.json:/root/.celestia-app/config/genesis.json:ro
        - ${PWD}/celestia-app/private/config/config.toml:/root/.celestia-app/config/config.toml:ro

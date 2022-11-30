@@ -82,9 +82,7 @@
           "base": "ucls",
           "display": "CLS",
           "name": "CLS",
-          "symbol": "CLS",
-          "uri": "",
-          "uri_hash": ""
+          "symbol": "CLS"
         }
       ]
     },
@@ -153,8 +151,7 @@
                   "denom": "ucls",
                   "amount": "5000000000"
                 },
-                "orchestrator": "celestia12kv0ez0gjhqmaaq6uaanwekvlyneqahfeetxe2",
-                "eth_address": "0x966e6f22781EF6a6A82BBB4DB3df8E225DfD9488"
+                "orchestrator": "celestia12kv0ez0gjhqmaaq6uaanwekvlyneqahfeetxe2"
               }
             ],
             "memo": "3d131ceb0b0c89e42909477e101452c0ade3d978@192.168.1.43:26656",
