@@ -3,7 +3,7 @@ version: '3'
 services:
   ethermint0:
     container_name: ethermint0
-    image: "ghcr.io/astriaorg/ethermint:${ETHERMINT_IMAGE_TAG:-eth-hashes-991f829}"
+    image: "ghcr.io/celestiaorg/ethermint:${ETHERMINT_IMAGE_TAG:-rollmint-7123a37}"
     environment:
       - HOME_DIR=/root/.ethermintd
     command: [

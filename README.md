@@ -11,19 +11,6 @@ Install Docker: (https://docs.docker.com/engine/install/)
 Install Docker Compose: (https://docs.docker.com/compose/install/)
 
 ## Setup
- 
-Git doesn't store exact file permissions so the preexisting keys for the `core`, `bridge`, and `light` nodes need the correct permissions set manually.  
- 
- The first time you setup the cluster run
- ```
-chmod 0600 celestia-node/full/*/nodekey* && \
-chmod 0600 celestia-node/light/*/nodekey* && \
-chmod 0600 dalc/celestia-app/celestia-light-keys
-```
-This is done for you if you use the provided setup scripts in `scripts/`
-
-There are 4 different options for clusters to run.
-
 
 ## Minimal Celestia Cluster
 > Not currently functional
