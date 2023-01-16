@@ -3,7 +3,7 @@ version: '3'
 services:
   light0:
     container_name: light0
-    image: "ghcr.io/celestiaorg/celestia-node:sha-042ebe1"
+    image: "ghcr.io/celestiaorg/celestia-node:${CELESTIA_NODE_IMAGE_TAG:-0.6.2-rc1}"
     environment:
       - NODE_TYPE=light
       - CELESTIA_PRIVATE_GENESIS=02EED4BCFAF0CC8A3D1100D588E571FBF44219488F01AB48870BC9015A9F105A

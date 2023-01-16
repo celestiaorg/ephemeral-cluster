@@ -2,11 +2,11 @@ version: '3'
 
 services:
   dalc0:
-    container_name: dalc0
-    image: "ghcr.io/celestiaorg/celestia-node:sha-f4e582e"
+    container_name: bridge0
+    image: "ghcr.io/celestiaorg/celestia-node:${CELESTIA_NODE_IMAGE_TAG:-0.6.2-rc1}"
     environment:
       - NODE_TYPE=bridge
-      - "CELESTIA_CUSTOM=private:B37ADC527B29B88D91CC758D1F4190D2C48CEEEB981175AEF1159099B09E1D04"
+      - "CELESTIA_CUSTOM=private:1D0BC6EFA758E94AC6519F8747A07E8E0CBBF3FBC8D9FFE684C22A863803BF27"
     command: [
             "celestia", "bridge",
             "start",

@@ -3,7 +3,7 @@ version: '3'
 services:
   core0:
     container_name: core0
-    image: "celestia-app:v0.7.0"
+    image: "ghcr.io/celestiaorg/celestia-app:${CELESTIA_APP_IMAGE_TAG:-v0.11.0}"
     environment:
       - CELESTIA_HOME=/root/.celestia-app
     command: [

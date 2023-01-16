@@ -23,11 +23,24 @@
   Address = "0.0.0.0"
   Port = "26658"
 
+[Gateway]
+  Address = ""
+  Port = ""
+  Enabled = false
+
 [Share]
   PeersLimit = 3
   DiscoveryInterval = "30s"
   AdvertiseInterval = "30s"
 
 [Header]
-  TrustedHash = "B37ADC527B29B88D91CC758D1F4190D2C48CEEEB981175AEF1159099B09E1D04"
+  TrustedHash = "1D0BC6EFA758E94AC6519F8747A07E8E0CBBF3FBC8D9FFE684C22A863803BF27"
   TrustedPeers = []
+  [Header.Store]
+    StoreCacheSize = 4096
+    IndexCacheSize = 16384
+    WriteBatchSize = 2048
+  [Header.Server]
+    WriteDeadline = "5s"
+    ReadDeadline = "1m0s"
+    MaxRequestSize = 512

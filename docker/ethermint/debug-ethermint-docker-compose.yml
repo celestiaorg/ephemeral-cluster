@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  ethermint0:
+    container_name: ethermint0
+    image: "ghcr.io/celestiaorg/ethermint-debug:${ETHERMINT_IMAGE_TAG-latest}"
+    command: [
+            "dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec",
+            "/usr/bin/ethermintd", "--", "start",
+            "--keyring-backend", "test"
+             ]
+    volumes:
+         - ${PWD}/.ethermintd/priv_validator_key.json:/root/.ethermint/config/priv_validator_key.json:ro
+         - ${PWD}/.ethermintd/node_key.json:/root/.ethermint/config/node_key.json:ro
+         - ${PWD}/.ethermintd/config/config.toml:/root/.ethermint/config/config.toml:ro
+         - ${PWD}/.ethermintd/keyring-test:/root/.ethermint/keyring-test:ro
+         - ${PWD}/.ethermintd/genesis.json:/root/.ethermint/config/genesis.json:ro
+    ports:
+      # Expose the EVM json-rpc server
+      - 8545:8545
+      # Debug port
+      - 40000:40000
+      # Expose websocket
+      - 8546:8546
+    security_opt:
+      - "seccomp:unconfined"
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      localnet:
+        ipv4_address: 192.167.4.0
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
